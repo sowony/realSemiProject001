@@ -78,7 +78,7 @@ function closeRefresh(){
 
 <body>
 
-	<h3>일정보기</h3>
+	<h3 align="center">일정보기</h3>
 
 	<form action="TbCal.do" method="post" id="muldelform">
 		<input type="hidden" name="command" value="muldel"> 

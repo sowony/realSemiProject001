@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.between.TbDic.mapper" >
+
+	<resultMap type="TbDictionaryDto" id="TbDictionaryResultMap">
+		<result property="dicNum" column="DIC_NUM" />
+		<result property="userId" column="USER_ID" />
+		<result property="dicKeyword" column="DIC_KEYWORD" />
+		<result property="dicMale" column="DIC_MALE" />
+		<result property="dicFemale" column="DIC_FEMALE" />
+		<result property="dicFlag" column="DIC_FLAG" />
+		<result property="dicLike" column="DIC_LIKE" />
+	</resultMap>
+	
+	<select id="selectList" resultMap="TbDictionaryResultMap" >
+	<![CDATA[	SELECT * FROM TB_DICTIONARY 
+				WHERE ROWNUM <= 10 ORDER BY DIC_LIKE DESC, DIC_FLAG 
+	]]>
+	</select>
+	
+	<select id="searchKeyword" parameterType="TbDictionaryDto" resultMap="TbDictionaryResultMap" >
+		SELECT * FROM TB_DICTIONARY
+		WHERE DIC_KEYWORD = #{dicKeyword}
+	</select>
+	
+	<select id="selectOne" parameterType="TbDictionaryDto" resultMap="TbDictionaryResultMap" >
+		SELECT * FROM TB_DICTIONARY
+		WHERE DIC_NUM = #{dicNum}
+	</select>
+	
+	<insert id="insert" parameterType="TbDictionaryDto" >
+		INSERT INTO TB_DICTIONARY VALUES(
+		TB_DICTIONARY_SEQ.NEXTVAL,
+		#{userId},
+		#{dicKeyword},
+		#{dicMale},
+		#{dicFemale},
+		0,
+		0
+		)
+	</insert>
+	
+	<insert id="insertLike" parameterType="TbDictionaryDto">
+		INSERT INTO TB_LIKE VALUES(
+		#{userId},
+		#{dicNum}
+		)
+		WHERE NOT USER_ID IN (SELECT USER_ID FROM TB_LIKE WHERE DIC_NUM = #{dicNum} AND USER_ID = #{userId})
+	</insert>
+	<!-- 위의 식이 성공하면 리턴 값 ==1 밑의 식을 실행 아니면 종료 -->
+	<update id="updateLike" parameterType="TbDictionaryDto">
+		UPDATE SET TB_DICTIONARY
+		DIC_LIKE = (SELECT DIC_LIKE FROM TB_DICTIONARY WHERE DIC_NUM = #{dicNum})+1
+	</update>
+	
+	<delete id="delete" parameterType="TbDictionaryDto">
+		DELETE TB_DICTIONARY WHERE DIC_NUM = #{dicNum}
+	</delete>
+
+
+
+
+</mapper>

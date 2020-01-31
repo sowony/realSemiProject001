@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>다이어리 추가 : 사이</title>
 <link href="css/calendar-insert.css" rel="stylesheet" type="text/css">
 </head>
 <%

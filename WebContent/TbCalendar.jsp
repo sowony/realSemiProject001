@@ -24,7 +24,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>다이어리/사이</title>
 <%@ include file="./form/mainPage.jsp" %>
 <script type="text/javascript">
 
@@ -153,7 +153,7 @@
 						int cnt = dayOfWeek;
 						for (int i = 1; i <= lastDay; i++) {
 					%>
-					<td><a class="dateNums" onclick="window.open('TbCal.do?command=callist&year=<%=year%>&month=<%=month%>&date=<%=i%>','List','width=300, height=400, menubar=no, status=no, toolbar=no, location=no, scrollbar=no, fullscreen=no')" style="background-color: <%=biz.fontColor(i, dayOfWeek)%>; color:white;"><%=i%></a>
+					<td><a class="dateNums" onclick="window.open('TbCal.do?command=callist&year=<%=year%>&month=<%=month%>&date=<%=i%>','List','width=400, height=450, menubar=no, status=no, toolbar=no, location=no, scrollbar=no, fullscreen=no')" style="background-color: <%=biz.fontColor(i, dayOfWeek)%>; color:white;"><%=i%></a>
 						<div class="preList">
 							<%=biz.getCalView(i, clist)%>
 						</div>
