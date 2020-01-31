@@ -48,7 +48,11 @@ INSERT INTO TB_USER VALUES('USER2@NAVER.COM','1234','USER','FEMALE','USER'
 INSERT INTO TB_BOARD VALUES
 (#{userId},#{boardGender},TB_BOARD_SEQ.NEXTVAL,TB_BOARD_GROUP_SEQ.NEXTVAL,1,0,#{boardDeleteCheck},#{boardTitle},#{boardContent},#{boardViewCount},SYSDATE,#{boardType},#{boardFlag},#{boardFlagType})
 
+SELECT * FROM TB_USER
 
+INSERT INTO TB_USER VALUES('USER@NAVER.COM','1234','호로호로','FEMALE','피카츗','1234','USER@NAVER.COM','N','USER',NULL,SYSDATE,0,'1234','EMPTY','EMPTY');
+
+SELECT * FROM TB_USER
 
 --회원정보 테이블
 --회원정보 회원아이디 비밀번호 이름 성별 나의애칭 생년월일 이메일 탈퇴여부 등급 탈퇴날짜 가입날짜 신고횟수 커플그룹번호 앨범경로 앨범제목
