@@ -32,7 +32,7 @@ public class TbBoardServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=utf-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		TbBoardBiz biz = new TbBoardBizImpl();
 		TbReBoardBiz reBiz = new TbReBoardBizImpl();
@@ -230,9 +230,8 @@ public class TbBoardServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=utf-8");
+		response.setContentType("text/html; charset=UTF-8");
 		doGet(request, response);
 	}
 	public String checkStatus(String userStatus) {

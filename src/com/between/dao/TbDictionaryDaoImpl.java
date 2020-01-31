@@ -31,7 +31,7 @@ public class TbDictionaryDaoImpl extends SqlMapConfig implements TbDictionaryDao
 
 	@Override
 	public TbDictionaryDto searchKeyword(String keyword) {
-		//키워드 출력
+		//키워드를 토대로 남자어 여자어 뜻 출력
 		SqlSession session = null;
 		TbDictionaryDto dto = null;
 		

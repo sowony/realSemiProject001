@@ -48,7 +48,9 @@ public class TbRegistServlet extends HttpServlet {
 
 			String userID = request.getParameter("userid");
 			String userPw = request.getParameter("userpw");
+			String userName= request.getParameter("username");
 			String userGender = request.getParameter("usergender");
+			String userDob = request.getParameter("year")+request.getParameter("month")+request.getParameter("day");
 			String userEmail = request.getParameter("useremail");
 			
 			System.out.println(userID);
@@ -57,19 +59,31 @@ public class TbRegistServlet extends HttpServlet {
 
 			dto.setUserId(userID);
 			dto.setUserPw(userPw);
+			dto.setUserName(userName);
 			dto.setUserGender(userGender);
+			dto.setUserDob(userDob);
 			dto.setUserEmail(userEmail);
-
+			 
 			int res = biz.TbUserDto(dto);
 			if (res > 0) {
-				responseAlert("회원가입 완료","RegistForm.jsp", response);
+				responseAlert("회원가입 완료", "RegistForm.jsp", response);
+
+			} else {
+				responseAlert("회원가입 실패", "RegistForm.jsp", response);
 
 			}
+			
+		} else if (command.equals("idChk")) {
+			String userId = request.getParameter("userId");
+			TbUserDto res = biz.idChk(userId);
 
-		}else if(command.equals("email")) {
-			
-			dispatch("faq.jsp", request, response);
-			
-		}
+			boolean idnotused = true;
+
+			if (res != null) {
+				idnotused = false;
+			}
+			response.sendRedirect("idchecking.jsp?idnotused=" + idnotused);
+
+		}  
 	}
 }

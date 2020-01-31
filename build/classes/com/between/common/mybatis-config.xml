@@ -14,6 +14,7 @@
 		<typeAlias type="com.between.dto.Criteria" alias="Cri" />
 		<typeAlias type="com.between.dto.TbReBoardDto" alias="TbReBoardDto" />
 		<typeAlias type="com.between.dto.TbDictionaryDto" alias="TbDictionaryDto" />
+		<typeAlias type="com.between.dto.TbPhotoDto" alias="TbPhotoDto"/>
 	</typeAliases>
 
   <environments default="development">
@@ -34,7 +35,8 @@
     <mapper resource="com/between/common/TbUser-mapper.xml"/>
     <mapper resource="com/between/common/regist-mapper.xml"/>
     <mapper resource="com/between/common/TbReBoard-mapper.xml" />
-    <mapper resource="com/between/common/TbDictionary-mapper.xml" /> 
+    <mapper resource="com/between/common/TbDictionary-mapper.xml" />
+    <mapper resource="com/between/common/TbPhoto-mapper.xml"/>
   </mappers>
   
 </configuration>

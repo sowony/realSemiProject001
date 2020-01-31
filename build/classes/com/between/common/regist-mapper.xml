@@ -15,8 +15,15 @@
 
  	<insert id="insert" parameterType="TbUserDto">
  	INSERT INTO TB_USER
-    VALUES(#{userId},#{userPw},'###',#{userGender},'###','###',#{userEmail},'###','###',SYSDATE,SYSDATE,2,3,'###','###')
+    VALUES(#{userId},#{userPw},#{userName},#{userGender},NULL,#{userDob},#{userEmail},'##','##',NULL,SYSDATE,2,NULL,NULL,NULL)
  	</insert>
+ 	
+ 	<select id="selectOne" parameterType="String" resultMap="MyResultMap">
+		SELECT USER_ID FROM TB_USER WHERE USER_ID = #{userId}
+	</select>
+	
+	 
+	
  	
  	
 </mapper>

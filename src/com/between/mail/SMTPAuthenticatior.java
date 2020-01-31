@@ -6,7 +6,7 @@ import javax.mail.PasswordAuthentication;
 public class SMTPAuthenticatior extends Authenticator {
 	 @Override
 	    protected PasswordAuthentication getPasswordAuthentication() {
-	        return new PasswordAuthentication("hoyhi123@naver.com","gkssk24**");
+	        return new PasswordAuthentication("hoyhi123@naver.com","gkssk24**&");
 	    }
 
 

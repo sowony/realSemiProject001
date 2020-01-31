@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.wst.server.ui.launchConfigurationType">
+<stringAttribute key="client-id" value="org.eclipse.wst.server.ui.web"/>
+<stringAttribute key="launchable-adapter-id" value="org.eclipse.jst.server.tomcat.web"/>
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.debug.core/.launches/realsemi002 (1).launch
+<stringAttribute key="module-artifact" value="org.eclipse.jst.jee.server:realsemi002//"/>
+<stringAttribute key="module-artifact-class" value="org.eclipse.wst.server.core.util.WebResource"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/realsemi002"/>
+=======
+<stringAttribute key="module-artifact" value="org.eclipse.jst.jee.server:semi002//"/>
+<stringAttribute key="module-artifact-class" value="org.eclipse.wst.server.core.util.WebResource"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/semi002"/>
+>>>>>>> 김진성/master:.metadata/.plugins/org.eclipse.debug.core/.launches/semi002 (4).launch
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="server-id" value="Tomcat v9.0 Server at localhost"/>
+</launchConfiguration>

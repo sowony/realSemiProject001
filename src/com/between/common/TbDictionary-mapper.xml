@@ -13,14 +13,26 @@
 	</resultMap>
 	
 	<select id="selectList" resultMap="TbDictionaryResultMap" >
-		SELECT * FROM TB_DICTIONARY ORDER BY DIC_LIKE DESC, DIC_FLAG
+	<![CDATA[	SELECT * FROM TB_DICTIONARY 
+				WHERE ROWNUM <= 10 ORDER BY DIC_LIKE DESC, DIC_FLAG 
+	]]>
+	</select>
+	
+	<select id="searchKeyword" parameterType="TbDictionaryDto" resultMap="TbDictionaryResultMap" >
+		SELECT * FROM TB_DICTIONARY
+		WHERE DIC_KEYWORD = #{dicKeyword}
+	</select>
+	
+	<select id="selectOne" parameterType="TbDictionaryDto" resultMap="TbDictionaryResultMap" >
+		SELECT * FROM TB_DICTIONARY
+		WHERE DIC_NUM = #{dicNum}
 	</select>
 	
 	<insert id="insert" parameterType="TbDictionaryDto" >
 		INSERT INTO TB_DICTIONARY VALUES(
 		TB_DICTIONARY_SEQ.NEXTVAL,
 		#{userId},
-		#{dicKeword},
+		#{dicKeyword},
 		#{dicMale},
 		#{dicFemale},
 		0,
