@@ -52,6 +52,10 @@
 		document.querySelector("#today").innerText = passedDay + "일";
 	}
 	
+	function windowopenPopup(){
+		window.open('windowopen.html', 'window팝업', 'width=300, height=300, menubar=no, status=no, toolbar=no');
+	}
+	
 </script>
 <link href="css/calendar.css" rel="stylesheet" type="text/css">
 </head>
@@ -79,7 +83,7 @@
 		List<TbCalDto> clist = dao.selectCalListView(yyyyMM, groupNum);
 	%>
 
-	<h1><%=groupDto.getUserId()%>&
+	<h1 class="title"><%=groupDto.getUserId()%> &
 		<%=groupDto.getPartnerId()%>의 캘린더
 	</h1>
 
@@ -107,7 +111,7 @@
 					<span id="anniDate">
 						<%=biz.selectDday("사귄날", groupNum).getCalTime().substring(6, 8) %> 
 					</span>일
-					<a href="TbCal.do?command=ddayEdit"><img alt="edit" src="images/pen.png"></a> 
+					<a href="TbCal.do?command=ddayEdit"><img alt="edit" src="images/pen.png" id="pen"></a> 
 				</h3>
 				<label>사랑한지? </label><span id="today"></span><br/>
 			</div>
@@ -128,14 +132,14 @@
 					<a
 						href="TbCal.do?command=addYear&year=<%=year + 1%>&month=<%=month%>">▶▶</a>
 				</caption>
-				<tr>
-					<th>일</th>
-					<th>월</th>
-					<th>화</th>
-					<th>수</th>
-					<th>목</th>
-					<th>금</th>
-					<th>토</th>
+				<tr id="days">
+					<th>SUN</th>
+					<th>MON</th>
+					<th>TUE</th>
+					<th>WED</th>
+					<th>THU</th>
+					<th>FRI</th>
+					<th>SAT</th>
 				</tr>
 				<tr>
 
@@ -149,10 +153,11 @@
 						int cnt = dayOfWeek;
 						for (int i = 1; i <= lastDay; i++) {
 					%>
-					<td><a class="countview"
-						href="TbCal.do?command=callist&year=<%=year%>&month=<%=month%>&date=<%=i%>"
-						style="color: <%=biz.fontColor(i, dayOfWeek)%>"><%=i%> </a>
-						<div class="preList"><%=biz.getCalView(i, clist)%></div></td>
+					<td><a class="dateNums" onclick="window.open('TbCal.do?command=callist&year=<%=year%>&month=<%=month%>&date=<%=i%>','List','width=300, height=400, menubar=no, status=no, toolbar=no, location=no, scrollbar=no, fullscreen=no')" style="background-color: <%=biz.fontColor(i, dayOfWeek)%>; color:white;"><%=i%></a>
+						<div class="preList">
+							<%=biz.getCalView(i, clist)%>
+						</div>
+					</td>
 					<%
 						if (cnt % 7 == 0) {
 					%>
@@ -167,10 +172,6 @@
 
 						if (a % 7 == 0) {
 							out.print("</tr>");
-						} else {
-							for (int i = 1; i < a + 1; i++) {
-								out.print("<td style='color: lightgray;'>" + i + "</td>");
-							}
 						}
 					%>
 				</tr>

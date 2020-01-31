@@ -66,11 +66,11 @@ public class TbCalBizImpl implements TbCalBiz {
 		String color = "";
 		
 		if((dayOfWeek-1+date)%7==0) {
-			color = "blue";
+			color = "#014d8f";
 		} else if((dayOfWeek-1+date)%7==1) {
-			color = "red";
+			color = "#1a4b76";
 		} else {
-			color = "black";
+			color = "#483d8b";
 		}
 		return color;
 	}
@@ -113,6 +113,12 @@ public class TbCalBizImpl implements TbCalBiz {
 	public int deleteOne(TbCalDto dto) {
 		return dao.deleteOne(dto);
 	}
-
+	
+	@Override
+	public String setTimeOnly(String calTime) {
+		String time = calTime.substring(8, 10) + "시" + calTime.substring(10, 12) + "분";
+		
+		return time;
+	}
 	
 }

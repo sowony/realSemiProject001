@@ -1,3 +1,4 @@
+<%@page import="com.between.dto.TbUserDto"%>
 <%@page import="com.between.dto.TbCalDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -13,11 +14,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="./form/mainPage.jsp" %>
-
+<link href="css/calendar-insert.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <%
+	
+	TbUserDto userInfo = (TbUserDto)session.getAttribute("dto");
+	
 	if (userInfo == null) {
 		pageContext.forward("index.jsp");
 	}
@@ -33,21 +36,21 @@
 	int min = Integer.parseInt(calDto.getCalTime().substring(10, 12));
 %>
 
-	<h1>UPDATE</h1>
+	<h3>일정 수정</h3>
 	
 	<form action="TbCal.do" method="post">
 		<input type="hidden" name="command" value="updateCal">
 		<table>
 			<tr>
-				<th>그룹번호</th>
-				<td><input type="text" name="groupNum" value="<%=groupNum %>" readonly="readonly"><input type="hidden" name="calNum" value="<%=calNum %>"></td>
+				<th class="header">그룹번호</th>
+				<td><input type="text" class="box" name="groupNum" value="<%=groupNum %>" readonly="readonly"><input type="hidden" name="calNum" value="<%=calNum %>"></td>
 			</tr>
 			<tr>
-				<th>날짜/시간</th>
+				<th class="header">날짜/시간</th>
 				<td>
-					<input type="text" name="year" value="<%=year %>" readonly="readonly">년
-					<input type="text" name="month" value="<%=month %>" readonly="readonly">월
-					<input type="text" name="date" value="<%=date %>" readonly="readonly">일
+					<input type="text" class="box" name="year" value="<%=year %>" readonly="readonly">년
+					<input type="text" class="box" name="month" value="<%=month %>" readonly="readonly">월
+					<input type="text" class="box" name="date" value="<%=date %>" readonly="readonly">일<br/>
 					<select name="hour">
 						<%
 							for (int i = 0; i < 24; i++) {
@@ -68,17 +71,17 @@
 				</td>
 			</tr>
 			<tr>
-				<th>일정</th>
-				<td><input type="text" name="title" value="<%=calDto.getCalTitle() %>"></td>
+				<th class="header">일정</th>
+				<td><input type="text" name="title" class="title" value="<%=calDto.getCalTitle() %>"></td>
 			</tr>
 			<tr>
-				<th>내용</th>
-				<td><textarea rows="10" cols="60" name="content"><%=calDto.getCalContent() %></textarea></td>
+				<th class="header">내용</th>
+				<td><textarea rows="10" cols="30" name="content"><%=calDto.getCalContent() %></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="수정">
-					<input type="button" value="취소" onclick="location.href='TbCal.do?command=callist&year=<%=year %>&month=<%=month %>&date=<%=date %>'">
+					<input class="click" type="submit" value="수정">
+					<input class="click" type="button" value="취소" onclick="location.href='TbCal.do?command=callist&year=<%=year %>&month=<%=month %>&date=<%=date %>'">
 				</td>
 			</tr>
 		</table>

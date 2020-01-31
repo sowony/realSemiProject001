@@ -21,5 +21,7 @@ public interface TbCalBiz {
 	public String isTwo(String msg);
 	public String fontColor(int date, int dayOfWeek);
 	public String getCalView(int i, List<TbCalDto> clist);
+	
+	public String setTimeOnly(String calTime);
 
 }

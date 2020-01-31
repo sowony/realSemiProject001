@@ -88,6 +88,7 @@ public int getCalNum() {
  public void setCalDate(Date calDate) {
      this.calDate = calDate;
  }
+ 
 
 @Override
 public String toString() {

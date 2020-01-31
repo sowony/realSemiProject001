@@ -22,7 +22,7 @@
 	
 	
   <select id="selectCalList" parameterType="TbCalDto" resultMap="TbCalResultMap">
-  	SELECT CAL_NUM, GROUP_NUM, CAL_TITLE, CAL_CONTENT, CAL_TIME, CAL_DATE 
+  	SELECT CAL_NUM, GROUP_NUM, CAL_TITLE, CAL_CONTENT, SUBSTR(CAL_TIME,9,4) CAL_TIME, CAL_DATE 
   	FROM TB_CAL WHERE GROUP_NUM = #{groupNum} AND SUBSTR(CAL_TIME,1,8)=#{calTime} ORDER BY CAL_NUM DESC
   </select>
   

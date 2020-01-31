@@ -141,6 +141,7 @@ public class TbCalServlet extends HttpServlet {
 			request.setAttribute("month", month);
 			request.setAttribute("date", date);
 			
+			System.out.println(list);
 			System.out.println(yyyyMMdd);
 			
 			dispatch("TbCalendarList.jsp", request, response);
@@ -162,7 +163,7 @@ public class TbCalServlet extends HttpServlet {
 			year = Integer.parseInt(request.getParameter("year"));
 			month = Integer.parseInt(request.getParameter("month"));
 			
-			String date = request.getParameter("date");
+			int date = Integer.parseInt(request.getParameter("date"));
 			
 			String hour = request.getParameter("hour");
 			String min = request.getParameter("min");
@@ -172,7 +173,7 @@ public class TbCalServlet extends HttpServlet {
 			
 			String calTime = year+
 					biz.isTwo((Integer.toString(month)))+
-					biz.isTwo(date)+
+					biz.isTwo(Integer.toString(date))+
 					biz.isTwo(hour)+
 					biz.isTwo(min);
 			TbCalDto dto = new TbCalDto();
@@ -182,6 +183,12 @@ public class TbCalServlet extends HttpServlet {
 			dto.setCalTime(calTime);
 			int res = biz.insertEvent(dto);
 			
+			String yyyyMMdd = year+biz.isTwo(Integer.toString(month))+biz.isTwo(Integer.toString(date));
+			
+			List<TbCalDto> list = biz.selectCalList(yyyyMMdd, userInfo.getGroupNum());
+			
+			request.setAttribute("list", list);
+			
 			request.setAttribute("groupDto", groupDto);
 			request.setAttribute("year", year);
 			request.setAttribute("month", month);
@@ -190,9 +197,9 @@ public class TbCalServlet extends HttpServlet {
 			request.setAttribute("date", date);
 		
 			if(res>0) {
-				dispatch("TbCalendar.jsp", request, response);
+				dispatch("TbCalendarList.jsp", request, response);
 			} else {
-				dispatch("TbCalendar.jsp",request,response);
+				dispatch("TbCalendarList.jsp",request,response);
 			}
 			
 			//dispatch("TbCalendar.jsp", request, response);
@@ -209,7 +216,7 @@ public class TbCalServlet extends HttpServlet {
 		} else if(command.equals("updateCal")) {
 			year = Integer.parseInt(request.getParameter("year"));
 			month = Integer.parseInt(request.getParameter("month"));
-			String date = request.getParameter("date");
+			int date = Integer.parseInt(request.getParameter("date"));
 			String hour = request.getParameter("hour");
 			String min = request.getParameter("min");
 			String title = request.getParameter("title");
@@ -219,7 +226,7 @@ public class TbCalServlet extends HttpServlet {
 			
 			String calTime = year +
 							biz.isTwo(Integer.toString(month)) +
-							biz.isTwo(date) +
+							biz.isTwo(Integer.toString(date)) +
 							biz.isTwo(hour) +
 							biz.isTwo(min);
 			
@@ -229,6 +236,13 @@ public class TbCalServlet extends HttpServlet {
 			calDto.setCalContent(content);
 			calDto.setCalTime(calTime);
 			calDto.setCalNum(calNum);
+			
+			String yyyyMMdd = year+biz.isTwo(Integer.toString(month))+biz.isTwo(Integer.toString(date));
+			
+			List<TbCalDto> list = biz.selectCalList(yyyyMMdd, userInfo.getGroupNum());
+			
+			request.setAttribute("list", list);
+			request.setAttribute("date", date);
 			
 			request.setAttribute("groupDto", groupDto);
 			request.setAttribute("year", year);
@@ -243,9 +257,9 @@ public class TbCalServlet extends HttpServlet {
 			
 			if(res > 0) {
 				
-				dispatch("TbCalendar.jsp", request, response);
+				dispatch("TbCalendarList.jsp", request, response);
 			} else {
-				dispatch("TbCalendar.jsp",request,response);
+				dispatch("TbCalendarList.jsp",request,response);
 			}
 		} else if(command.equals("muldel")) {
 			

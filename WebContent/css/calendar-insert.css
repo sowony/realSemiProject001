@@ -1,0 +1,37 @@
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+*{
+	font-family: 'Jeju Gothic', cursive;
+	text-align: center;
+}
+
+table{
+	width: 200px;
+	height: auto;
+}
+
+.box{
+	width:35px;
+	height: auto;
+	font-size: 13px;
+	border: none;
+	
+}
+.title{
+	width: 95%;
+	text-align: left;
+}
+
+textarea{
+	resize: none;
+	text-align: left;
+}
+
+.header{
+	font-size: 10px;
+	min-width: 60px;
+}
+
+.click{
+	cursor: pointer;
+}

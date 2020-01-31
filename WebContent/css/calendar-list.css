@@ -1,0 +1,18 @@
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+*{
+	font-family: 'Jeju Gothic', cursive;
+}
+
+table{
+	text-align: center;
+}
+
+a{
+	text-decoration: none;
+	color: rgb(15,76,129);
+}
+input{
+	cursor: pointer;
+}
+
