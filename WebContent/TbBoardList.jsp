@@ -115,5 +115,7 @@
 			</table>
 		</div>
 	</div>
+	
+	<input type="button" value="TEST" onclick="location.href='http://192.168.35.148:8081/chat?matchNo=<%=matchNo%>&myRole=<%=myRole%>" />
 </body>
 </html>
