@@ -13,6 +13,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="./form/mainPage.jsp" %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -68,9 +69,9 @@
 <body>
 
 <div>
-<h1><%=dto.getUserId() %>내글 목록보기</h1>
 
-	<div align="right">
+	<h1>내글 목록 보기 </h1>
+	<div align="right" >
 		<form action="TbUser.do" method="post">
 			<input type="hidden" name="command" value="search">
 			<input type="hidden" name="userId" value="<%=dto.getUserId()%>">
@@ -84,7 +85,7 @@
 	<form action="TbUser.do" method="post" id="muldelform">
 	<input type="hidden" name="command" value="muldel">
 	<input type="hidden" name="userId" value="<%=dto.getUserId() %>">
-	<h1><%=dto.getUserId() %></h1>
+
 	<fieldset>
 		<table>
 			<col width="20px" >

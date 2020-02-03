@@ -8,19 +8,79 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<%@ include file="./form/mainPage.jsp" %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<body>
-
-<% 
-	TbUserDto dto = (TbUserDto)session.getAttribute("dto"); 
-	String partnerId = String.valueOf(request.getAttribute("partnerId"));
-	TbGroupDto groupdto = (TbGroupDto)session.getAttribute("groupdto");
-	//System.out.println(partnerId+"나의 유저페이지에서 보는....");
-	
-%>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- 일반 로그인 팝업창  -->
+<style type="text/css">	
+
+	.background{
+	display:none; 
+	position:fixed; 
+	_position:absolute; 
+	top:0; 
+	left:0; 
+	width:100%;  
+	height:100%; 
+	z-index:100;
+	}
+.background .dimBackground {
+	position:absolute; 
+	top:0; 
+	left:0; 
+	width:100%; 
+	height:100%;
+	 background:#000; 
+	 opacity: .5; 
+	 filter:alpha(opacity=70);
+	 }
+.background .popuplayer{
+	display:block;
+	}
+.popuplayer {
+	background-color:#f1f1f1;
+	width:300px;
+	height:200px;
+	display:none;
+	position:absolute;
+	top:50%;
+	left:50%;
+	z-index:10;
+	color:#000;
+	}
+	
+	
+</style>
+<!-- 일반 로그인 스크립트  -->
+<script type="text/javascript">
+function layer_popup(el){
+	var $el = $(el); 
+	var isDim = $el.prev().hasClass('dimBackground');
+	isDim ? $('.background').show() : $el.show();
+	var $elWidth = ~~($el.outerWidth()),
+		$elHeight = ~~($el.outerHeight()),
+		docWidth = $(document).width(),
+		docHeight = $(document).height();
+	
+
+	if ($elHeight < docHeight || $elWidth < docWidth) {
+		$el.css({
+			marginTop: -$elHeight /2,
+			marginLeft: -$elWidth/2
+		});
+	}
+	else{
+		$el.css({top: 0, left: 0});
+
+	}
+}
+function closelayer(){
+	var isDim = $(".popuplayer").prev().hasClass('dimBackground'); 
+	isDim ? $('.background').hide() : $el.hide(); 
+}
+
+</script>
 <script type="text/javascript">
 
 alert('유저님의 마이페이지입니다. 환영합니다.');
@@ -63,12 +123,27 @@ $(function(){
 });	
 </script>
 
-<div>
-	<h1>유저 마이페이지</h1>
-	<h1>나의 애칭<%=dto.getUserNick() %></h1>
-	<table border=1>
+</head>
+<body>
+
+
+<% 
+	TbUserDto dto = (TbUserDto)session.getAttribute("dto"); 
+	String partnerId = String.valueOf(request.getAttribute("partnerId"));
+	//메인 페이지에 담겨 있는 정보라서 쓰지 않음
+	//TbGroupDto groupdto = (TbGroupDto)session.getAttribute("groupdto");
+	//System.out.println(partnerId+"나의 유저페이지에서 보는....");
+	
+%>
+
+
+<div align="center">
+	<div><h1>나의 애칭<%=dto.getUserNick() %></h1></div>
+	
+	<div>
+	<table>
 		<tr>
-			<td>우리자기</td>
+			<th>우리자기</th>
 			
 			<td>
 			<form action="TbUser.do" method="post"> 
@@ -100,13 +175,13 @@ $(function(){
 
 		</tr>
 		<tr>
-			<td>email</td>
+			<th>email</th>
 			<td><%=dto.getUserEmail() %></td>
 		</tr>
 
 		
 		<tr>
-			<td>회원정보 수정하기 </td>
+			<th>회원정보 수정하기 </th>
 			<td>
 				<input type="button" onclick="location.href='TbUser.do?command=userupdateform&partnerId=<%=partnerId %>'" value="수정" />
 				
@@ -118,13 +193,44 @@ $(function(){
 		<form action="TbUser.do" method="post">
 		<input type="hidden" name="command" value="userboardlist">
 		<input type="hidden" name="userId" value="<%=dto.getUserId()%>">
-			<h1>내글보기</h1>
-			<input type="password" name = "equserPw">
-			<input type="submit" value="비밀번호">
+			<table>
+			<tr>
+			 <th>내글보기</th>
+			 <td>
+				<input type="password" name = "equserPw">
+				<input type="submit" placeholder="비밀번호를 입력하세요" value="확인">
+			</td>
+			</tr>
+
+			</table>
 		</form>
-	<input type="button" value="로그아웃" onclick="location.href='TbUser.do?command=logout'">
-	<input type="button" value="로그인뒤 보이는 첫페이지로" onclick="location.href='TbUser.do?command=loginres&userId=<%=dto.getUserId() %>&userPw=<%=dto.getUserPw() %>'">
+		</div>
+
+	 <!-- 탈퇴팝업창 배경 -->
+	<div class="background">
+	<div class="dimBackground"></div>
+	<div id="popuplayer" class="popuplayer">
 	
+	<!-- 탈퇴 팝업창  -->    
+	<div  align="center">	
+	<br/><br/>
+		정말 탈퇴 하시겠습니까? <br/>
+		탈퇴하시면 같은 아이디로<br/>
+		 가입 불가합니다.<br/>
+		<br/><br/>
+		<input type="button" value="탈퇴하기" onclick="location.href='TbUser.do?command=userdelete&userId=<%=dto.getUserId()%>'"/>
+		<input type="button" value="취소" onclick="closelayer();"/>
+	</div>
+	
+	</div>
+	</div>
 </div>
+	<div align="center" >	
+		탈퇴를 원하시면 버튼을 눌러주세요 ㅠㅠ<br/>
+	<input type="button" value="탈퇴하기" onclick="layer_popup('#popuplayer');" />
+
+	 </div>
+
 </body>
+
 </html>

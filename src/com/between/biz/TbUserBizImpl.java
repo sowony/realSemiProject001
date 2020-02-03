@@ -1,6 +1,9 @@
 package com.between.biz;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import com.between.dao.TbUserDao;
 import com.between.dao.TbUserDaoImpl;
@@ -11,7 +14,30 @@ import com.between.dto.TbUserDto;
 public class TbUserBizImpl implements TbUserBiz{
 
 	TbUserDao dao = new TbUserDaoImpl();
+
+	//sns회원가입
+	@Override
+	public int snslongregister(TbUserDto dto) {
+		// TODO Auto-generated method stub
+		return dao.snslongregister(dto);
+	}
+
+
+
+	//sns아이디 체크하기 
+	@Override
+	public TbUserDto snsIdCheck(String userId) {
+		// TODO Auto-generated method stub
+		return dao.snsIdCheck(userId);
+	}
 	
+	//파트너 아이디 혹은 이름 갖고오기 
+	@Override
+	public List<TbUserDto> partnerNickorName(int groupNum) {
+		
+		return dao.partnerNickorName(groupNum);
+	}
+
 	@Override
 	//로그인 
 	public TbUserDto login(String userId,String userPw) {
@@ -140,6 +166,9 @@ public class TbUserBizImpl implements TbUserBiz{
 		// TODO Auto-generated method stub
 		return dao.countBoard(userId);
 	}
+
+
+
 
 
 

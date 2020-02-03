@@ -10,7 +10,15 @@ public interface TbUserDao {
 
 
 	//회원가입 , 아이디 중복 체크 , 유효성 검사 - 여정현
+
+	//sns회원가입
+	public int snslongregister(TbUserDto dto);
 	
+	//sns아이디 체크하기 
+	public TbUserDto snsIdCheck(String userId);
+	
+	//파트너 이름 혹은 닉네임 불러오기 
+	public List<TbUserDto> partnerNickorName(int groupNum);
 	
 	//로그인 
 	public  TbUserDto login(String userId,String userPw) ;
