@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.between.TbChat.mapper" >
+
+	<resultMap type="TbGroupDto" id="TbGroupResultMap">
+		<result property="userId" column="USER_ID"/>
+		<result property="partnerId" column="PARTNER_ID"/>
+		<result property="groupNum" column="GROUP_NUM"/>
+		<result property="groupCheck" column="GROUP_CHECK"/>
+	</resultMap>
+
+	<select id="checkGroup" parameterType="int" resultMap="TbGroupResultMap">
+ 	SELECT * FROM TB_GROUP WHERE GROUP_NUM = #{groupNum}
+ 	</select>
+
+
+
+</mapper>

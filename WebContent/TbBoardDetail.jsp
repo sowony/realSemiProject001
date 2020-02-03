@@ -35,6 +35,7 @@
 	    lang: 'ko-KR' // 언어 세팅
 	  });
 	  $('#summernote').summernote('disable');
+	 
 
 	});
 </script>

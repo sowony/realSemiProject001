@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	response.setHeader("Pragma", "no-cache");
 	response.setHeader("Cache-control", "no-store");
@@ -15,7 +15,7 @@
 	response.setContentType("text/html; charset=UTF-8");
 %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 
 
 <!DOCTYPE html>
