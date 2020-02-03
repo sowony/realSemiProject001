@@ -22,7 +22,13 @@ public class TbCalBizImpl implements TbCalBiz {
 	
 	@Override
 	public List<TbCalDto> selectCalList(String calTime, int groupNum) {
-		return dao.selectCalList(calTime, groupNum);
+		List<TbCalDto> list = dao.selectCalList(calTime, groupNum);
+		for(int i=0;i < list.size();i++) {
+			String hour = list.get(i).getCalTime().substring(0,2);
+			String min = list.get(i).getCalTime().substring(2);
+			list.get(i).setCalTime(hour+"시"+min+"분");
+		}
+		return list;
 	}
 
 	@Override

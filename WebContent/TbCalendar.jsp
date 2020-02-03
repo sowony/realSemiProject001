@@ -178,7 +178,7 @@
 			</table>
 		</div>
 	</div>
-
+<%@ include file="./form/footer.jsp" %>
 
 
 </body>
