@@ -50,21 +50,39 @@ public class TbChatServlet extends HttpServlet {
        TbGroupDto dto = biz.checkGroup(groupNum); //커플그룹번호에 해당하는 커플테이블DTO
        System.out.println(dto.getUserId());
        System.out.println(dto.getGroupNum());
-       String menteeId = userInfo.getUserId();
+//       String menteeId = userInfo.getUserId();
 //       String myRole = userInfo.getUserStatus();
 //       String myRole = "mentor";
        String myRole = "";
        String matchNo = userInfo.getGroupNum()+"";
        String mentorId = "";
+       String menteeId = "";
+       
+       
        if(userInfo.getUserId().equals(dto.getUserId())) {
-    	   mentorId = dto.getPartnerId();
-    	   myRole = "mentor";
-       } else {
+    	   // 그룹테이블에 userId에 들어가 있는 경우 멘토 방향으로
     	   mentorId = dto.getUserId();
-    	   myRole = "mentee";
-       }
-       response.sendRedirect("http://localhost:8081/?myRole="+ myRole + "&myId="+menteeId+"&otherId="+mentorId + "&matchNo="+matchNo);
+    	   menteeId = dto.getPartnerId();
+    	   myRole = "mentor";
+    	   
+    	   response.sendRedirect("http://localhost:8081/?myRole="+ myRole + "&myId="+menteeId+"&otherId="+mentorId + "&matchNo="+matchNo);
 
+       } else if(userInfo.getUserId().equals(dto.getPartnerId())){
+    	   // 그룹테이블에 partnerId에 들어가 있는 경우 멘티 방향으로
+    	   mentorId = dto.getPartnerId();
+    	   menteeId = dto.getUserId();
+    	   myRole = "mentee";
+
+         response.sendRedirect("http://localhost:8081/?myRole="+ myRole + "&myId="+mentorId+"&otherId_json="+ menteeId_json + "&No_json="+ No_json);
+       }
+       
+       
+       
+       
+       
+       
+       
+       
     //멘토 채팅 접근   
 //       LoginProfileDto mentorDto = (LoginProfileDto)session.getAttribute("mentorDto");
 //       String mentorId = mentorDto.getId();
@@ -93,7 +111,7 @@ public class TbChatServlet extends HttpServlet {
 //       }
 //       System.out.println("멘토 >> 체팅 멘토 아이디 : " + mentorId + ", 멘티id 정보 : " + menteeId_json + ", 메치시퀀스번호 : " + No_json);
 //       response.sendRedirect("http://172.30.1.13:8010/?myRole="+ myRole + "&myId="+mentorId+"&otherId_json="+ menteeId_json + "&No_json="+ No_json);
-		
+    }
 	}
 
 }

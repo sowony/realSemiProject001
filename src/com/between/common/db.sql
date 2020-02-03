@@ -59,7 +59,7 @@ SELECT * FROM TB_USER
 --0116 커플그룹번호는 커플그룹테이블의 커플그룹번호와 참조관계
 CREATE TABLE TB_USER(
     USER_ID              VARCHAR2(100)     NOT NULL, 
-    USER_PW              VARCHAR2(20)      NOT NULL, 
+    USER_PW              VARCHAR2(1000)      NOT NULL, 
     USER_NAME            VARCHAR2(20)      NOT NULL, 
     USER_GENDER          VARCHAR2(6)       NOT NULL, 
     USER_NICK            VARCHAR2(100)     NULL, 

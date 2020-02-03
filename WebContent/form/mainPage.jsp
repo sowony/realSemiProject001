@@ -64,6 +64,11 @@
 	z-index: 10;
 	color: #000;
 }
+.loginBtn{
+	background-color: #f1f1f1;
+	border: none;
+	outline: none;
+}
 </style>
 <!-- 일반 로그인 스크립트  -->
 <script type="text/javascript">
@@ -259,21 +264,19 @@
 					<!-- 구글 로그인 -->
 					<div class="g-signin2" data-width="220" data-height="45"
 						data-onsuccess="onSignIn" data-longtitle="true"></div>
-					<a href="#" onclick="signOut();">구글로그아웃</a>
 
 					<!-- 카카오톡 로그인 -->
 					<div>
 						<a href="#" onclick="kakaologin();return false;"><img
 							src="images/kakao_account_login_btn_medium_narrow.png"
-							alt="카카오로그인"></a> <input type="button" onclick="kout()"
-							value="카카오로그아웃">
+							alt="카카오로그인"></a> 
 					</div>
 
 					<!-- 일반 로그인 -->
 					<div>
 						<form action="TbUser.do" method="post">
 							<input type="hidden" name="command" value="loginres" />
-							<table border="1">
+							<table>
 								<tr>
 									<th>아이디</th>
 									<td><input type="text" name="userId" id="userId"></td>
@@ -284,10 +287,11 @@
 								</tr>
 								<tr>
 									<!-- location.href='TbUser.do?command=main -->
-									<td colspan="2"><input type="submit" value="로그인">
-										<input type="button" value="회원가입"
+									<td colspan="2" align="center" >
+										<input class="loginBtn" type="submit" value="로그인">
+										<input class="loginBtn" type="button" value="회원가입"
 										onclick="location.href='TbUser.do?command=registerform'">
-										<input type="button" value="취소" onClick='closelayer();'>
+										<input class="loginBtn" type="button" value="취소" onClick='closelayer();'>
 									</td>
 								</tr>
 							</table>
