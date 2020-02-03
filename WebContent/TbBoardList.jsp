@@ -33,10 +33,14 @@
 	#list{
 		width: 700px;
 		margin: 0 auto;
-		background-color: pink;
+		background-color: white;
+		color: black;
 	}
 	
-	
+	.title{
+		text-decoration: none;
+		color: black;
+	}
 	
 
 
@@ -81,7 +85,7 @@
 										<td><c:forEach begin="1" end="${dto.boardTab }">
 								 &nbsp;
 								</c:forEach> <a
-											href="TbBoard.do?command=boarddetail&boardnum=${dto.boardNum }">${dto.boardTitle }</a>
+											href="TbBoard.do?command=boarddetail&boardnum=${dto.boardNum }" class="title">${dto.boardTitle }</a>
 										</td>
 										<td align="center">${dto.boardGender }</td>
 										<td align="center">${dto.boardViewCount}</td>
@@ -115,5 +119,6 @@
 			</table>
 		</div>
 	</div>
+	<%@ include file="./form/footer.jsp" %>
 </body>
 </html>
