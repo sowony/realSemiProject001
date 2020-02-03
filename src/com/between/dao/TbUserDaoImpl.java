@@ -16,8 +16,73 @@ import com.between.dto.TbGroupDto;
 import com.between.dto.TbUserDto;
 
 public class TbUserDaoImpl extends SqlMapConfig implements TbUserDao{
-	private String usernamespace = "com.between.common.mapper.";
+	private String usernamespace = "com.between.TbUser.mapper.";
+
 	
+	//sns회원가입
+	@Override
+	public int snslongregister(TbUserDto dto) {
+		SqlSession session = null; 
+		int res= 0 ;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.insert(usernamespace+"snslongregister",dto);
+		} catch (Exception e) {
+			System.out.println("sns회원가입했을때 오류 - 다오");
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
+	}
+
+
+
+	
+	//sns아이디 체크하기 
+	@Override
+	public TbUserDto snsIdCheck(String userId) {
+		SqlSession session = null; 
+		TbUserDto dto = null; 
+		System.out.println("여기는 다오 sns 아이디 체크체크"+userId);
+		//		Map<String, String> map = new HashMap<String, String>();
+//		map.put("userId", userId);
+//		System.out.println("여기는 sns아이디 체크하기 부분에 userId넘어왔나?"+map.get(userId));
+//		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			dto = session.selectOne(usernamespace+"snsIdCheck",userId);
+		} catch (Exception e) {
+			System.out.println("sns아디이 체크하기 오류 - 다오");
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return dto;
+	}
+	
+	//파트너 닉네임 혹은 아이디 갖고오기 
+	@Override
+	public List<TbUserDto> partnerNickorName(int groupNum) {
+		SqlSession session =  null;
+		List<TbUserDto> list = null ; 
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			list = session.selectList(usernamespace+"partnerNickorName",groupNum);
+		} catch (Exception e) {
+			System.out.println("파트너 닉네임 혹은 아이디 갖고오기 오류 - 다오");
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return list;
+	}
+
 	//로그인
 	@Override
 	public TbUserDto login(String userId, String userPw) {
@@ -407,6 +472,11 @@ public class TbUserDaoImpl extends SqlMapConfig implements TbUserDao{
 		
 		return res;
 	}
+
+
+
+
+
 
 
 	

@@ -57,29 +57,140 @@ public class TbUserServlet extends HttpServlet {
 			 
 			response.sendRedirect("RegistForm.jsp");
 			
+		}else if(command.equals("snslogindata")) {
+			//sns아이디 시도시 디비에 자료가 있는지 검사 true ->있음 false->없음
+			String userId = request.getParameter("userId");
+			System.out.println("에스엔에스 처음으로 값 들어가는 곳"+userId);
+			//String userPw = request.getParameter("userPw");
+			TbUserDto dto = biz.snsIdCheck(userId);
+			System.out.println(userId +"sns 데이터 전달 ");
+			String data = "false";
+			if(dto == null) {
+				data = "false";
+			}else if(dto != null) {
+				data = "true";
+			}
+			System.out.println("sns 데이터 전달 값"+data);
+			//결과 값 데이터 jsp로 재전송, gson -> 문자열의 값으로 전송 가능 
+			response.getWriter().write(data);
+			
 		}else if(command.equals("googlelogin")) {
 			
-			response.sendRedirect("TbUserSnsloginResgisterForm.jsp");
+			//구글 아이디로 들어왔을떄
+			String userId = request.getParameter("userId");
+			String userPw = request.getParameter("userPw");
+			System.out.println("유저 아이디유 : " + userId);
+			
+			TbUserDto dto = biz.login(userId, userPw);
+			
+			//dispatch("loginafter.jsp", request, response);
+			//로그인 받은 정보에 따른 판별
+			if(dto != null) {
+				TbGroupDto groupdto = biz.partnerDtoDummy(userId);
+				System.out.println("그룹 정보에 대한 값 "+groupdto);
+				
+				//만약 커플 그룹 정보가 있다면 담아서 보내주고 없으면 회원정보만 보내주기 
+				if(groupdto != null) {
+					HttpSession session =  request.getSession(true);
+					session.setAttribute("dto", dto);
+					session.setAttribute("groupdto", groupdto);
+					response.sendRedirect("index.jsp");
+					
+				}else if(groupdto == null){
+					HttpSession session =  request.getSession(true);
+					session.setAttribute("dto", dto);
+					System.out.println("공백 값일때 "+dto.getUserId());
+					dispatch("index.jsp", request, response);
+				}
+				
+				//session.setMaxInactiveInterval(60*10);
+				} else {
+					responseAlert("로그인 실패", "index.jsp", response);
+				}
+
 			
 		}else if(command.equals("kakaologin")) {
 			
-			response.sendRedirect("TbUserSnsloginResgisterForm.jsp");
+			//카카오 아이디로 들어왔을떄
+			String userId = request.getParameter("userId");
+			String userPw = request.getParameter("userPw");
+			System.out.println("유저 아이디유 : " + userId);
+			
+			TbUserDto dto = biz.login(userId, userPw);
+			
+			//dispatch("loginafter.jsp", request, response);
+			//로그인 받은 정보에 따른 판별
+			if(dto != null) {
+				TbGroupDto groupdto = biz.partnerDtoDummy(userId);
+				System.out.println("그룹 정보에 대한 값 "+groupdto);
+				
+				//만약 커플 그룹 정보가 있다면 담아서 보내주고 없으면 회원정보만 보내주기 
+				if(groupdto != null) {
+					HttpSession session =  request.getSession(true);
+					session.setAttribute("dto", dto);
+					session.setAttribute("groupdto", groupdto);
+					response.sendRedirect("index.jsp");
+					
+				}else if(groupdto == null){
+					HttpSession session =  request.getSession(true);
+					session.setAttribute("dto", dto);
+					System.out.println("공백 값일때 "+dto.getUserId());
+					dispatch("index.jsp", request, response);
+				}
+				
+				//session.setMaxInactiveInterval(60*10);
+				} else {
+					responseAlert("로그인 실패", "index.jsp", response);
+				}
+
+			
+			
+		}else if(command.equals("snsresgistform")) {
+			String userId = request.getParameter("userId");
+			String userPw = request.getParameter("userPw");
+			String userEmail = request.getParameter("userEmail");
+			String userGender = request.getParameter("userGender");
+			//카카오는 연도는 주지않고 월일만 제공 앞부분은 고객이 직접 적도록 한다 
+			String userDob = request.getParameter("userDob");
+			
+			TbUserDto snsdto = new TbUserDto();
+			snsdto.setUserId(userId);
+			snsdto.setUserPw(userPw);
+			snsdto.setUserEmail(userEmail);
+			snsdto.setUserGender(userGender);
+			snsdto.setUserDob(userDob);
+			
+			request.setAttribute("snsdto", snsdto);
+			dispatch("TbUserSnsloginResgisterForm.jsp", request, response);
+			
 			
 		}else if(command.equals("snsloginregisterformres")) {
 			String userId = request.getParameter("userId");
+			String userPw = request.getParameter("userPw");
 			String userName = request.getParameter("userName");
 			String userEmail = request.getParameter("userEmail");
+			String userNick = request.getParameter("userNick");
 			String userGender = request.getParameter("userGender");
+			//카카오에서는 year부분만 받아서 합쳐준다, 구글에서는 따로 제공 안하기 때문에 새로작성
 			String userDob = request.getParameter("year")+request.getParameter("month")+request.getParameter("date");
+			System.out.println(userGender);
 			
-			TbUserDto dto = new TbUserDto();
-			dto.setUserId(userId);
-			dto.setUserName(userName);
-			dto.setUserEmail(userEmail);
-			dto.setUserGender(userGender);
-			dto.setUserDob(userDob);
+			TbUserDto snsdto = new TbUserDto();
+			snsdto.setUserId(userId);
+			snsdto.setUserPw(userPw);
+			snsdto.setUserName(userName);
+			snsdto.setUserEmail(userEmail);
+			snsdto.setUserNick(userNick);
+			snsdto.setUserGender(userGender);
+			snsdto.setUserDob(userDob);
 			
-			
+			int res = biz.snslongregister(snsdto);
+			if(res>0) {
+				responseAlert("가입되셨습니다. sns로그인을 해주세요", "index.jsp", response);				
+			}else {
+				responseAlert("가입 실패 하셨습니다. 다시 재가입 해주세요.", "index.jsp", response);
+			}
+
 			
 			
 		}else if(command.equals("main")) {
@@ -119,6 +230,7 @@ public class TbUserServlet extends HttpServlet {
 			
 			
 		}else if(command.equals("loginafter2")) { 
+			//이것 쓰는지 확인하고 삭제할것 
 			HttpSession session = request.getSession();
 			TbUserDto dto = (TbUserDto)session.getAttribute("dto");
 			String userId = dto.getUserId();
@@ -147,11 +259,15 @@ public class TbUserServlet extends HttpServlet {
 				if(res >0) {
 					int res2 = biz.partnerNumUpdateUT(userId);
 					if(res2 > 0) {
-						responseAlert("커플등록 성공하였습니다", "index.jsp", response);	
+						HttpSession session = request.getSession();
+						TbGroupDto groupdto = biz.partnerDtoDummy(userId);
+						session.setAttribute("groupdto", groupdto);
+
+						responseAlert("커플등록 성공 하였습니다", "index.jsp", response);
 					}
 					
 				}else {
-					responseAlert("커플등록 실패 하였습니다", "loginafter2.jsp", response);
+					responseAlert("커플등록 실패 하였습니다", "index.jsp", response);
 				}
 			}else if(check.equals("no")){
 				//커플 신청이 들어왔을때 거절시
@@ -163,10 +279,10 @@ public class TbUserServlet extends HttpServlet {
 					}
 					
 				}else {
-					responseAlert("커플등록을 실패하였습니다", "loginafter2.jsp", response);
+					responseAlert("커플등록을 실패하였습니다", "index.jsp", response);
 				}
 			}else {
-				response.sendRedirect("loginafter2.jsp");
+				response.sendRedirect("index.jsp");
 			}
 				
 		}else if(command.equals("logout")) {
@@ -513,6 +629,15 @@ public class TbUserServlet extends HttpServlet {
 			
 			}
 	
+		}else if(command.equals("userdelete")) {
+			String userId = request.getParameter("userId");
+			int res = biz.userDelete(userId);
+			if(res>0) {
+				HttpSession session = request.getSession();
+				session.invalidate();
+				responseAlert("탈퇴되었습니다", "index.jsp", response);
+			}
+			
 		}
 		
 		

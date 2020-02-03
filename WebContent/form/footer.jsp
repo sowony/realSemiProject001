@@ -95,7 +95,10 @@
 		});
 		marker.setMap(map);
 	</script>
+<<<<<<< HEAD
 	<div id="fFoot" >kh정보교육원 &copy; all rights reserved...</div>
+=======
+>>>>>>> JINS/master
 </footer>
 
 </body>

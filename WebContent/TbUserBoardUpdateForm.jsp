@@ -19,6 +19,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="./form/mainPage.jsp" %>
 <meta charset="UTF-8">
 <title>속닥속닥</title>
 <style type="text/css">

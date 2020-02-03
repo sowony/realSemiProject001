@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.between.common.mapper">
+<mapper namespace="com.between.TbUser.mapper">
 
 	<resultMap type="TbUserDto" id="TbUserResultMap">
 		<result property="userId" column="USER_ID"/>
@@ -57,6 +57,14 @@
 	SELECT * FROM TB_USER WHERE USER_ID =#{userId} AND USER_PW=#{userPw} AND USER_DEACT= 'N'
 	</select>
 	
+	<select id="snsIdCheck" parameterType="String" resultMap="TbUserResultMap">
+	SELECT * FROM TB_USER WHERE USER_ID =#{userId} AND USER_DEACT= 'N'
+	</select>
+	
+	<select id="partnerNickorName" parameterType="int" resultMap="TbUserResultMap" >
+	SELECT USER_ID,USER_NAME FROM TB_USER WHERE GROUP_NUM = #{groupNum}
+	</select>
+
  	<insert id="userInsert" parameterType="TbUserDto">
  	INSERT INTO TB_USER
     VALUES(#{userId},#{userPw},#{userName},#{userGender},#{userDob},#{userEmail})
@@ -68,9 +76,11 @@
  	
  	
  	<delete id="userDelete" parameterType="String">
- 	UPDATE TB_USER SET USER_DEACT = 'Y' 
+ 	UPDATE TB_USER SET USER_DEACT = 'Y',  USER_DEACT_DATE = SYSDATE
  	WHERE USER_ID = #{userId}
  	</delete>
+ 	
+ 	
  	
  	
  	

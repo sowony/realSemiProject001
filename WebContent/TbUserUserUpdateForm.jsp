@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<%@ include file="./form/mainPage.jsp" %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -79,14 +80,14 @@ $(function(){
 
 <body>
 
-<div>
-<h1>유저 정보 수정 테이블 </h1>
+<div align="center">
+<h1>내 정보 수정 하기 </h1>
 
 	<form action="TbUser.do" method="post">
 	<input type="hidden" name="command" value="userupdateformres">
 	<input type="hidden" name="userId" value="<%=dto.getUserId()%>">
 	
-		<table border=1>	
+		<table>	
 			<tr>
 				<th>우리자기</th>
 <%
