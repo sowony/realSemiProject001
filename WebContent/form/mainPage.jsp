@@ -221,7 +221,7 @@
 				<li><p>우리사이</p></li>
 				<li><a href="">커플테스트</a></li>
 				<li><a href="TbDic.do?command=dictionaryMain">니캉내캉</a></li>
-				<li><a href="uploadForm.jsp">사진분석</a></li>
+				<li><a href="TbBoardImageUploadForm.jsp">사진분석</a></li>
 				<li></li>
 			</ul>
 			<ul>
