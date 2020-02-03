@@ -57,7 +57,7 @@
 	SELECT * FROM TB_USER WHERE USER_ID =#{userId} AND USER_PW=#{userPw} AND USER_DEACT= 'N'
 	</select>
 		
-	<select id="snsIdCheck" parameterMap="map" resultMap="TbUserResultMap">
+	<select id="snsIdCheck" parameterType="map" resultMap="TbUserResultMap">
 	SELECT * FROM TB_USER WHERE USER_ID =#{userId} AND USER_DEACT= 'N'
 	</select>
 	
