@@ -11,13 +11,13 @@ header{
 }
 
 .content{
-	height: 450px;
+	height: 400px;
 	text-align: center;
 	opacity: 0.6;
 }
 .couple{
 	width: 800px;
-	height: auto;
+	height: 400px;
 }
 
 
@@ -113,4 +113,8 @@ nav div:hover {
 	background: white;
 	display: inline-block;
 	z-index: 1;
+}
+
+#userPw{
+	font-family: serif;
 }

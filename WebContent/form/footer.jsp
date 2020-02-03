@@ -81,24 +81,22 @@
 	<div id="fMap"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0c002a4f48acd874ac165e4ca28a53e6"></script>
 	<script>
-		var mapContainer = document.getElementById("fMap"),
-			mapOption = {
-				center: new kakao.maps.LatLng(37.4989488,127.0327044),
-				level: 3
-		};
-		var map = new kakao.maps.Map(mapContainer, mapOption);
 		
 		var markerPosition = new kakao.maps.LatLng(37.4989488,127.0327044);
 		
-		var marker = new kakao.maps.Marker({
-			position: markerPosition 
-		});
-		marker.setMap(map);
+		var marker = {
+				position: markerPosition
+		};
+		
+		var staticMapContainer = document.getElementById('fMap'),
+		staticMapOption = {
+			center: new kakao.maps.LatLng(37.4989488,127.0327044),
+			level: 3,
+			marker: marker
+		};
+		
+		var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 	</script>
-<<<<<<< HEAD
-	<div id="fFoot" >kh정보교육원 &copy; all rights reserved...</div>
-=======
->>>>>>> JINS/master
 </footer>
 
 </body>

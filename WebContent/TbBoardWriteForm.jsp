@@ -23,21 +23,27 @@
 <script type="text/javascript">
 	$(function() {
 	  $('#summernote').summernote({
-	    height: 300,
+	    height: 500,
 	    lang: 'ko-KR' // 언어 세팅
 	  });
 	});
 </script>
+<style type="text/css">
+	
+</style>
 </head>
 <body>
+<div>
+
+</div>
+<%@ include file="./form/mainPage.jsp" %>
 <%
-	TbUserDto userInfo = (TbUserDto)session.getAttribute("dto");
+	//TbUserDto userInfo = (TbUserDto)session.getAttribute("dto");
 
 	if(userInfo==null){
 		pageContext.forward("index.jsp");
 	}
 %>
-	
 	
 	<div>
 	<form action="TbBoard.do" method="post" >
@@ -66,6 +72,6 @@
 	</div>
 	
 
-
+	<%@ include file="./form/footer.jsp" %>
 </body>
 </html>

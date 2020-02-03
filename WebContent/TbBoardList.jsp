@@ -25,7 +25,6 @@
 <title>속닥속닥</title>
 <style type="text/css">
 	#board{
-		background-color: rgb(240,240,240);
 		width:100%;
 		margin: 0 auto;
 		padding: 20px 0;
@@ -43,10 +42,28 @@
 		color: black;
 	}
 	
-	.title:hover{
-		color: rgb(51, 85, 139);
+	.title:hover {
+		color: rgb(132, 141, 197);
 	}
 	
+	.page{
+		margin: 0 5px;
+		color: black;
+		text-decoration: none;
+	}
+	
+	.page:hover{
+		color: rgb(132, 141, 197);
+	}
+	
+	#write{
+		border: none;
+		font-size: 13px;
+	}
+	#write:hover{
+		color: rgb(132, 141, 197);
+		cursor: pointer;
+	}
 
 
 </style>
@@ -104,7 +121,7 @@
 				<tr>
 					<td colspan="4" align="right"><input type="button"
 						value="글쓰기"
-						onclick="location.href='TbBoard.do?command=boardwriteform'" /></td>
+						onclick="location.href='TbBoard.do?command=boardwriteform'" id="write" /></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="center">
@@ -113,7 +130,7 @@
 								<a href="TbBoard.do?command=boardlist&page=${pageMaker.startPage-1 }">이전</a>
 							</c:if>
 							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
-								 <a href='<c:url value="TbBoard.do?command=boardlist&page=${pageNum }"/>'>${pageNum } </a> 
+								 <a class="page" href='<c:url value="TbBoard.do?command=boardlist&page=${pageNum }"/>'>${pageNum } </a> 
 							</c:forEach>
 							<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 								<a href="TbBoard.do?command=boardlist&page=${pageMaker.endPage+1 }">다음</a> 
