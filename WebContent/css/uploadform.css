@@ -1,0 +1,72 @@
+/* 사진 추가 버튼 css먹이기 */
+
+.file_input_textbox{
+float:left;
+}
+
+.file_input_div{	/*div 안에 file태그 내장되어있음*/
+position: relative;
+width: 140px;
+height:23px;
+overflow: hidden;
+background-color: yellow;
+border-radius: 4px 4px 4px 4px / 4px 4px 4px 4px;
+float: right;
+
+cursor: pointer;
+}
+
+.file_input_button{
+width: 140px;
+position: absolute;
+top: 0px;
+background-color: rgb(239,206,197);
+border-style: solid;
+border-color: rgb(239,206,197); /*rgb(209,175,148);*/
+border-radius: 4px 4px 4px 4px / 4px 4px 4px 4px;
+color : rgb(91,44,54);
+cursor: pointer;
+float: right;
+font-weight: bold;
+
+}
+.file_input_hidden{	
+font-size: 45px;
+position: absolute;
+right: 0px;
+top: 0px;
+opacity: 0;
+
+
+/*이게 뭐하는거지?*/
+filter: alpha(opacity=0);
+-ms-filter: "alpha(opacity=0)";
+-khtml-opacity: 0;
+-moz-opacity: 0;
+}
+
+/*UploadForm.jsp의 파일업로드 버튼입니다.*/
+#uploadClick{	
+background-color: rgb(204,36,49);
+border-style: solid;
+border-color: rgb(204,36,49); 
+border-radius: 4px 4px 4px 4px / 4px 4px 4px 4px;
+color : rgb(200,200,200);
+cursor: pointer;
+float: right;
+clear: right;
+margin-left: 10px;
+font-weight: bold;
+} 
+
+
+.uploadform_div_parent{ /*정렬 목적 / 이놈이 모든 키였다.*/
+	width: 750px;
+	margin: 10px; auto;
+	cursor: pointer;
+}
+
+legend{
+	font-size: 20pt; 
+	color: rgb(220,142,106);
+}

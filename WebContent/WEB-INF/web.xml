@@ -53,4 +53,14 @@
   	<url-pattern>/TbDic.do</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  <servlet-name>chatController</servlet-name>
+  <servlet-class>com.between.controller.TbChatServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>chatController</servlet-name>
+  	<url-pattern>/TbChat.do</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

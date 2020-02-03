@@ -65,22 +65,16 @@ public class TbDictionaryServlet extends HttpServlet {
 			dto.setDicMale(male);
 			dto.setDicFemale(female);
 			dto.setUserId(userId);
-			String msg = "";
-			int res = biz.insert(dto);
-			if(res>0) {
-				msg = "성공!";
-			} else {
-				msg = "실패!";
-			}
+			biz.insert(dto);
 			
 			PrintWriter out = response.getWriter();
 			String str="";
 			   str = "<script type='text/javascript'>";
 			   str += "opener.window.location.reload();";  //오프너 새로고침
-			   str += "alert("+msg+");";   // 창닫기
 			   str += "self.close();";
 			   str += "</script>";
-			   out.print(str);
+			   
+			out.print(str);
 		} else if(command.equals("like")) {
 			
 		}
