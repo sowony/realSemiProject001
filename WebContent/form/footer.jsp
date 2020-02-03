@@ -95,7 +95,6 @@
 		});
 		marker.setMap(map);
 	</script>
-	<div id="foot" >kh정보교육원 &copy; all rights reserved...</div>
 </footer>
 
 </body>

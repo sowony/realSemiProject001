@@ -118,8 +118,6 @@
 						var userEmail = res.kakao_account.email;
 						var userNickName = res.properties.nickname;
 						var gender = res.kakao_account.gender;
-						document.getElementById("userId").value = userId;
-						document.getElementById("userEmail").value = userEmail;
 						alert(JSON.stringify(res));
 						persistAccessToken: true;
 					},

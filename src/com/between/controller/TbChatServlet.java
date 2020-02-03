@@ -73,7 +73,7 @@ public class TbChatServlet extends HttpServlet {
     	   menteeId = dto.getUserId();
     	   myRole = "mentee";
 
-         response.sendRedirect("http://localhost:8081/?myRole="+ myRole + "&myId="+mentorId+"&otherId_json="+ menteeId_json + "&No_json="+ No_json);
+         response.sendRedirect("http://localhost:8081/?myRole="+ myRole + "&myId="+mentorId+"&otherId_json="+ menteeId + "&No_json="+ matchNo);
        }
        
        
