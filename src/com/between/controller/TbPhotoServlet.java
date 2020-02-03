@@ -58,12 +58,12 @@ try {
 //         String fileCloneName1 = "";   	//클론 제목
 //         String photoPath1 ="";        	//경로 x 경로는 request.getRealPath()로 구함
 				// 파일이 저장될 서버의 경로.
-//         String uploadPath = "\\\\192.168.10.33\\tomcat9\\prj\\";	//학원 서버 경로
+         String uploadPath = "\\\\192.168.10.33\\tomcat9\\prj\\";	//학원 서버 경로
 //         System.out.println(uploadPath);
 
 		// 로컬경로 잡는법
-				String uploadPath = request.getSession().getServletContext().getRealPath("uploadImages");
-				System.out.println("uploadPath : " + uploadPath);
+//				String uploadPath = request.getSession().getServletContext().getRealPath("uploadImages");
+//				System.out.println("uploadPath : " + uploadPath);
 				
 				// request.getParameter()사용이 불가능, 해당 라이브러리에서 제공하는 대체함수.
 			// 해당 객체가 저장까지 다 시켜줌

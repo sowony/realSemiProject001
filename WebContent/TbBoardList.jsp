@@ -28,6 +28,7 @@
 		background-color: rgb(240,240,240);
 		width:100%;
 		margin: 0 auto;
+		padding: 20px 0;
 	}
 	
 	#list{
@@ -40,6 +41,10 @@
 	.title{
 		text-decoration: none;
 		color: black;
+	}
+	
+	.title:hover{
+		color: rgb(51, 85, 139);
 	}
 	
 

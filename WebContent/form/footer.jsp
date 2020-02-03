@@ -15,39 +15,39 @@
 		font-family: 'Jeju Gothic', cursive;
 	}
 	
-	#foot{
+	#fFoot{
 		background-color:rgb(51, 85, 139);
 		color: white;
 		float: left;
 		width: 100%;
 	}
 	
-	#contact{
+	#fContact{
 		float: left;
-		width: 25%;
+		width: 20%;
 		height: 50px;
-		margin: 5px 50px;		
+		margin: 5px 70px;		
 	}
 	p{
 		font-size: 10px;
 	}
 	
-	#map{
+	#fMap{
 		float: right;
 		width: 20%;
 		height: 150px;
-		margin: 5px 50px;
+		margin: 5px 70px;
 		 
 	}
 	
-	#logo{
+	#fLogo{
 		width: 100px;
 		height: auto;
 	}
-	#intro{
+	#fIntro{
 		float: left;
-		width: 25%;
-		margin: 5px 50px;
+		width: 20%;
+		margin: 5px 70px;
 	}
 	footer{
 		border-top: 1px solid gray;
@@ -64,12 +64,12 @@
 
 <footer>
 	
-	<div id="intro">
-		<img alt="logo" src="images/logo.gif" id="logo">
+	<div id="fIntro">
+		<img alt="logo" src="images/logo.gif" id="fLogo">
 		<p>서로의 연결고리를 견고히 하기 위해서<br/> 상처있는 마음에 힐링을 주기 위한<br/> 연애 종합 플렛폼 입니다</p>
 	</div>
 	
-	<div id="contact">
+	<div id="fContact">
 		<h3>Contact Us</h3>
 		<div>
 			<p>서울특별시 강남구 테헤란로14길 6 남도빌딩 4F</p>
@@ -78,10 +78,10 @@
 			<p>이메일: hello42@hello42.com</p>
 		</div>
 	</div>
-	<div id="map"></div>
+	<div id="fMap"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0c002a4f48acd874ac165e4ca28a53e6"></script>
 	<script>
-		var mapContainer = document.getElementById("map"),
+		var mapContainer = document.getElementById("fMap"),
 			mapOption = {
 				center: new kakao.maps.LatLng(37.4989488,127.0327044),
 				level: 3
@@ -95,7 +95,7 @@
 		});
 		marker.setMap(map);
 	</script>
-	<div id="foot" >kh정보교육원 &copy; all rights reserved...</div>
+	<div id="fFoot" >kh정보교육원 &copy; all rights reserved...</div>
 </footer>
 
 </body>
