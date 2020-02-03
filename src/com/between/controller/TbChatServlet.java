@@ -43,7 +43,7 @@ public class TbChatServlet extends HttpServlet {
        // 이 안에서 멘토,멘티 둘을 나눠서 사용하기.
        // 1. if문으로 나눔
        // 2. 기준은 groupNum으로 가져온 dto에서 뽑아온 userId와 partnerId
-       // 3. 각각 멘토, 멘티 부분에 대입하여 넣음
+       // 3. 각각 멘토, 멘티 부분에 대입하여 넣음 멘토는 userId, 멘티는 partnerId
        // 4. 방번호는 groupNum으로 대체(유니크)
        
        int groupNum = userInfo.getGroupNum(); //커플그룹번호
@@ -66,7 +66,6 @@ public class TbChatServlet extends HttpServlet {
        response.sendRedirect("http://localhost:8081/?myRole="+ myRole + "&myId="+menteeId+"&otherId="+mentorId + "&matchNo="+matchNo);
 
     //멘토 채팅 접근   
-    } else if(command.equals("chat_mentor")) {
 //       LoginProfileDto mentorDto = (LoginProfileDto)session.getAttribute("mentorDto");
 //       String mentorId = mentorDto.getId();
 //       String myRole = "mentor";
@@ -95,7 +94,6 @@ public class TbChatServlet extends HttpServlet {
 //       System.out.println("멘토 >> 체팅 멘토 아이디 : " + mentorId + ", 멘티id 정보 : " + menteeId_json + ", 메치시퀀스번호 : " + No_json);
 //       response.sendRedirect("http://172.30.1.13:8010/?myRole="+ myRole + "&myId="+mentorId+"&otherId_json="+ menteeId_json + "&No_json="+ No_json);
 		
-	}
 	}
 
 }
