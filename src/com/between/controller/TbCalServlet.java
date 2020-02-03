@@ -78,7 +78,7 @@ public class TbCalServlet extends HttpServlet {
 			
 		
 		TbGroupDto groupDto = biz.findPartner(userInfo.getGroupNum());
-				
+		System.out.println("groupDto"+groupDto);
 		
 		if(command.equals("calendar")) {		
 			

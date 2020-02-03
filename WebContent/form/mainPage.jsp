@@ -237,7 +237,7 @@ function idChk(userId, userPw, userEmail, userGender, userDob){
 						
 						var userNickName = res.properties.nickname;
 						var gender = res.kakao_account.gender;
-						alert(JSON.stringify(res));
+						//alert(JSON.stringify(res));
 						persistAccessToken: true;
 					},
 					fail : function(error) {
