@@ -33,9 +33,9 @@ public class TbUserBizImpl implements TbUserBiz{
 	
 	//파트너 아이디 혹은 이름 갖고오기 
 	@Override
-	public List<TbUserDto> partnerNickorName(int groupNum) {
+	public TbUserDto partnerNickorName(int groupNum, String partnerId) {
 		
-		return dao.partnerNickorName(groupNum);
+		return dao.partnerNickorName(groupNum,partnerId);
 	}
 
 	@Override

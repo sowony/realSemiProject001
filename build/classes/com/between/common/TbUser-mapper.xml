@@ -56,13 +56,13 @@
 	<select id="login" resultMap="TbUserResultMap">
 	SELECT * FROM TB_USER WHERE USER_ID =#{userId} AND USER_PW=#{userPw} AND USER_DEACT= 'N'
 	</select>
-	
-	<select id="snsIdCheck" parameterType="String" resultMap="TbUserResultMap">
+		
+	<select id="snsIdCheck" parameterMap="map" resultMap="TbUserResultMap">
 	SELECT * FROM TB_USER WHERE USER_ID =#{userId} AND USER_DEACT= 'N'
 	</select>
 	
 	<select id="partnerNickorName" parameterType="int" resultMap="TbUserResultMap" >
-	SELECT USER_ID,USER_NAME FROM TB_USER WHERE GROUP_NUM = #{groupNum}
+	SELECT USER_ID,USER_NAME FROM TB_USER WHERE GROUP_NUM = #{groupNum} AND USER_ID = #{userId}
 	</select>
 
  	<insert id="userInsert" parameterType="TbUserDto">
