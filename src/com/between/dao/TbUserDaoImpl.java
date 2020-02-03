@@ -66,13 +66,16 @@ public class TbUserDaoImpl extends SqlMapConfig implements TbUserDao{
 	
 	//파트너 닉네임 혹은 아이디 갖고오기 
 	@Override
-	public List<TbUserDto> partnerNickorName(int groupNum) {
+	public TbUserDto partnerNickorName(int groupNum, String partnerId) {
 		SqlSession session =  null;
-		List<TbUserDto> list = null ; 
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("groupNum", groupNum);
+		map.put("partnerId", partnerId);
+		TbUserDto dto = null;
 		
 		try {
 			session = getSqlSessionFactory().openSession(true);
-			list = session.selectList(usernamespace+"partnerNickorName",groupNum);
+			dto = session.selectOne(usernamespace+"partnerNickorName",map);
 		} catch (Exception e) {
 			System.out.println("파트너 닉네임 혹은 아이디 갖고오기 오류 - 다오");
 			e.printStackTrace();
@@ -80,7 +83,7 @@ public class TbUserDaoImpl extends SqlMapConfig implements TbUserDao{
 			session.close();
 		}
 		
-		return list;
+		return dto;
 	}
 
 	//로그인

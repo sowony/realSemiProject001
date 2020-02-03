@@ -61,11 +61,11 @@ public class TbChatServlet extends HttpServlet {
        
        if(userInfo.getUserId().equals(dto.getUserId())) {
     	   // 그룹테이블에 userId에 들어가 있는 경우 멘티 방향으로
-    	   mentorId = dto.getUserId();
-    	   menteeId = dto.getPartnerId();
+    	   mentorId = dto.getPartnerId();
+    	   menteeId = dto.getUserId();
     	   myRole = "mentee";
     	   
-    	   response.sendRedirect("http://localhost:8081/?myRole="+ myRole + "&myId="+menteeId+"&otherId="+mentorId + "&matchNo="+matchNo);
+    	   response.sendRedirect("http://192.168.110.5:8081/?myRole="+ myRole + "&myId="+menteeId+"&otherId="+mentorId + "&matchNo="+matchNo);
 
        } else if(userInfo.getUserId().equals(dto.getPartnerId())){
     	   // 그룹테이블에 partnerId에 들어가 있는 경우 멘토 방향으로
@@ -94,7 +94,7 @@ public class TbChatServlet extends HttpServlet {
 //              }
 //           }
               
-         response.sendRedirect("http://localhost:8081/?myRole="+ myRole + "&myId="+menteeId+"&otherId_json="+ menteeId_json + "&No_json="+ No_json);
+         response.sendRedirect("http://192.168.110.5:8081/?myRole="+ myRole + "&myId="+mentorId+"&otherId_json="+ menteeId_json + "&No_json="+ No_json);
        }
     //멘토 채팅 접근   
 //       LoginProfileDto mentorDto = (LoginProfileDto)session.getAttribute("mentorDto");
