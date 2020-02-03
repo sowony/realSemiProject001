@@ -37,6 +37,7 @@
     <mapper resource="com/between/common/TbReBoard-mapper.xml" />
     <mapper resource="com/between/common/TbDictionary-mapper.xml" />
     <mapper resource="com/between/common/TbPhoto-mapper.xml"/>
+    <mapper resource="com/between/common/TbChat-mapper.xml"  />
   </mappers>
   
 </configuration>
