@@ -86,12 +86,17 @@
 			});
 
 		}
-
+			return false;
+			
+			
+			
+			
 	}
 
 	function closelayer() {
 		var isDim = $(".popup-layer").prev().hasClass('dim-background');
 		isDim ? $('.background').hide() : $el.hide();
+		return false;
 	}
 </script>
 

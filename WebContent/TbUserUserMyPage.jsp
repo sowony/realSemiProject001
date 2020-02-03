@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%@ include file="./form/mainPage.jsp" %>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -35,10 +35,10 @@
 	 opacity: .5; 
 	 filter:alpha(opacity=70);
 	 }
-.background .popuplayer{
+.background .popuplayer1{
 	display:block;
 	}
-.popuplayer {
+.popuplayer1 {
 	background-color:#f1f1f1;
 	width:300px;
 	height:200px;
@@ -54,7 +54,7 @@
 </style>
 <!-- 일반 로그인 스크립트  -->
 <script type="text/javascript">
-function layer_popup(el){
+function layer_popup1(el){
 	var $el = $(el); 
 	var isDim = $el.prev().hasClass('dimBackground');
 	isDim ? $('.background').show() : $el.show();
@@ -74,10 +74,12 @@ function layer_popup(el){
 		$el.css({top: 0, left: 0});
 
 	}
+	return false;
 }
-function closelayer(){
-	var isDim = $(".popuplayer").prev().hasClass('dimBackground'); 
+function closelayer1(){
+	var isDim = $(".popuplayer1").prev().hasClass('dimBackground'); 
 	isDim ? $('.background').hide() : $el.hide(); 
+	return false;
 }
 
 </script>
@@ -189,7 +191,8 @@ $(function(){
 		</tr>
 		
 	</table>
-		
+		</div>
+		<div align="left">
 		<form action="TbUser.do" method="post">
 		<input type="hidden" name="command" value="userboardlist">
 		<input type="hidden" name="userId" value="<%=dto.getUserId()%>">
@@ -209,7 +212,7 @@ $(function(){
 	 <!-- 탈퇴팝업창 배경 -->
 	<div class="background">
 	<div class="dimBackground"></div>
-	<div id="popuplayer" class="popuplayer">
+	<div id="popuplayer1" class="popuplayer1">
 	
 	<!-- 탈퇴 팝업창  -->    
 	<div  align="center">	
@@ -219,7 +222,7 @@ $(function(){
 		 가입 불가합니다.<br/>
 		<br/><br/>
 		<input type="button" value="탈퇴하기" onclick="location.href='TbUser.do?command=userdelete&userId=<%=dto.getUserId()%>'"/>
-		<input type="button" value="취소" onclick="closelayer();"/>
+		<input type="button" value="취소" onclick="closelayer1();"/>
 	</div>
 	
 	</div>
@@ -227,7 +230,7 @@ $(function(){
 </div>
 	<div align="center" >	
 		탈퇴를 원하시면 버튼을 눌러주세요 ㅠㅠ<br/>
-	<input type="button" value="탈퇴하기" onclick="layer_popup('#popuplayer');" />
+	<input type="button" value="탈퇴하기" onclick="layer_popup1('#popuplayer1');" />
 
 	 </div>
 
