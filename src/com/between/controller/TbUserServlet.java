@@ -259,7 +259,11 @@ public class TbUserServlet extends HttpServlet {
 				if(res >0) {
 					int res2 = biz.partnerNumUpdateUT(userId);
 					if(res2 > 0) {
-						responseAlert("커플등록 성공하였습니다", "index.jsp", response);	
+						HttpSession session = request.getSession();
+						TbGroupDto groupdto = biz.partnerDtoDummy(userId);
+						session.setAttribute("groupdto", groupdto);
+
+						responseAlert("커플등록 성공 하였습니다", "index.jsp", response);
 					}
 					
 				}else {
