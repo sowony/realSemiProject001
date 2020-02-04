@@ -1,6 +1,8 @@
 package com.between.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,8 @@ import com.between.biz.TbChatBiz;
 import com.between.biz.TbChatBizImpl;
 import com.between.dto.TbGroupDto;
 import com.between.dto.TbUserDto;
+
+import static com.between.controller.ServletUtil.*;
 
 @WebServlet("/TbChatServlet")
 public class TbChatServlet extends HttpServlet {
@@ -63,7 +67,7 @@ public class TbChatServlet extends HttpServlet {
     	   menteeId = dto.getUserId();
     	   myRole = "mentee";
     	   
-    	   response.sendRedirect("http://192.168.110.5:8081/?myRole="+ myRole + "&myId="+menteeId+"&otherId="+mentorId + "&matchNo="+matchNo);
+    	   response.sendRedirect("http://192.168.0.16:8081/?myRole="+ myRole + "&myId="+menteeId+"&otherId="+mentorId + "&matchNo="+matchNo);
 
        } else if(userInfo.getUserId().equals(dto.getPartnerId())){
     	   // 그룹테이블에 partnerId에 들어가 있는 경우 멘토 방향으로
@@ -92,7 +96,7 @@ public class TbChatServlet extends HttpServlet {
 //              }
 //           }
               
-         response.sendRedirect("http://192.168.110.5:8081/?myRole="+ myRole + "&myId="+mentorId+"&otherId_json="+ menteeId_json + "&No_json="+ No_json);
+         response.sendRedirect("http://192.168.0.16:8081/?myRole="+ myRole + "&myId="+mentorId+"&otherId_json="+ menteeId_json + "&No_json="+ No_json);
        }
     //멘토 채팅 접근   
 //       LoginProfileDto mentorDto = (LoginProfileDto)session.getAttribute("mentorDto");

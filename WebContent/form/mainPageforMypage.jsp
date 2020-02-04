@@ -19,8 +19,6 @@
 	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
-
-
 </head>
 <body>
 
@@ -86,14 +84,8 @@
 			</ul>
 			<ul>
 				<li><p>커플사이</p></li>
-				<li><a href="">앨범</a></li>
 				<li><a href="TbCal.do?command=calendar">다이어리</a></li>
 				<li><a href="TbChat.do?command=enterChat">사이톡</a></li>
-				<li><a href="">영상통화</a></li>
-			</ul>
-			<ul>
-				<li><p>사이다</p></li>
-				<li><a href="">전문상담사</a></li>
 				<li><a href="TbBoard.do?command=boardlist">속닥속닥</a></li>
 			</ul>
 		</div>
