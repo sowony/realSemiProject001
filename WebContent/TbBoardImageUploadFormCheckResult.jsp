@@ -57,28 +57,28 @@ System.out.println("첫 키입니다 : "+ dto.get("contempt"));
 
 <div id="emotionText" style="width: 200px; min-height: 300px; background-color: rgba(235,205,213,0.5); float: right; padding-top: 5px; padding-left:10px; margin-top: 10px; margin-right: 10px;">
 <div>
-<p>경멸 : <%=dto.get("contempt")%> %</p>
+<p>경멸 : <%=(double)dto.get("contempt")*100%> %</p>
 </div>
 <div>
-<p>놀라움 : <%=dto.get("surprise")%> %</p>
+<p>놀라움 : <%=(double)dto.get("surprise")*100%> %</p>
 </div>
 <div>
-<p>행복함 : <%=dto.get("happiness")%> %</p>
+<p>행복함 : <%=(double)dto.get("happiness")*100%> %</p>
 </div>
 <div>
-<p>자연스러움 : <%=dto.get("neutral")%> %</p>
+<p>자연스러움 : <%=(double)dto.get("neutral")*100%> %</p>
 </div>
 <div>
-<p>슬픔 : <%=dto.get("sadness")%> %</p>
+<p>슬픔 : <%=(double)dto.get("sadness")*100%> %</p>
 </div>
 <div>
-<p>역겨움 : <%=dto.get("disgust")%> %</p>
+<p>역겨움 : <%=(double)dto.get("disgust")*100%> %</p>
 </div>
 <div>
-<p>화남 : <%=dto.get("anger")%> %</p>
+<p>화남 : <%=(double)dto.get("anger")*100%> %</p>
 </div>
 <div>
-<p>두려움 : <%=dto.get("fear")%> %</p>
+<p>두려움 : <%=(double)dto.get("fear")*100%> %</p>
 </div>
 </div>
 

@@ -41,16 +41,16 @@
 	</insert>
 	
 	<insert id="insertLike" parameterType="TbDictionaryDto">
-		INSERT INTO TB_LIKE VALUES(
-		#{userId},
-		#{dicNum}
-		)
-		WHERE NOT USER_ID IN (SELECT USER_ID FROM TB_LIKE WHERE DIC_NUM = #{dicNum} AND USER_ID = #{userId})
-	</insert>
+		INSERT INTO TB_LIKE (
+		USER_ID,
+		DIC_NUM)
+		SELECT #{userId},#{dicNum} FROM DUAL
+		WHERE NOT EXISTS (SELECT * FROM TB_LIKE WHERE DIC_NUM = #{dicNum} AND USER_ID = #{userId})</insert>
 	<!-- 위의 식이 성공하면 리턴 값 ==1 밑의 식을 실행 아니면 종료 -->
 	<update id="updateLike" parameterType="TbDictionaryDto">
-		UPDATE SET TB_DICTIONARY
+		UPDATE TB_DICTIONARY SET 
 		DIC_LIKE = (SELECT DIC_LIKE FROM TB_DICTIONARY WHERE DIC_NUM = #{dicNum})+1
+		WHERE DIC_NUM = #{dicNum}
 	</update>
 	
 	<delete id="delete" parameterType="TbDictionaryDto">

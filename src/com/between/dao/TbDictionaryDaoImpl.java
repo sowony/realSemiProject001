@@ -82,13 +82,13 @@ public class TbDictionaryDaoImpl extends SqlMapConfig implements TbDictionaryDao
 	}
 
 	@Override
-	public int updateLike(TbDictionaryDto dto) {
+	public int updateLike(int dickNum) {
 		SqlSession session = null;
 		int res = 0;
 		
 		try {
 			session = getSqlSessionFactory().openSession(true);
-			res = session.update(namespace+"updateLike", dto);
+			res = session.update(namespace+"updateLike", dickNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

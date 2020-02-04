@@ -255,9 +255,14 @@ table {
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><select name="year" id="year"><option></option></select> 년
-					<select name="month" id="month"><option></option></select> 월 <select
-					name="date" id="date"><option></option></select>일</td>
+				<td><select name="year"  id="year">
+						<option value=""></option></select> 년
+					<select name="month" id="month">
+						<option value=""></option></select> 월 
+					<select name="date" id="date">
+						<option value=""></option></select>일
+						
+				</td>
 
 			</tr>
 			<tr>

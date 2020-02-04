@@ -379,7 +379,7 @@ function idChkg(userId, userPw, userEmail){
 					
 			%>
 			<input type="button" class="login-btn" name="btn" onclick="layer_popup('#popup-layer');" value="로그인" /> 
-			<input type="button" name="btn" class="login-btn" value="회원가입" />
+			<input type="button" name="btn" class="login-btn" onclick="location.href='TbRegist.do?command=regist'" value="회원가입" />
 			<%
 					
 				} else {
