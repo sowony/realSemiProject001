@@ -8,9 +8,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	<%@ include file="./form/mainPageforMypage.jsp" %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/mypage.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- 일반 로그인 팝업창  -->
 <style type="text/css">	
@@ -139,10 +140,28 @@ $(function(){
 %>
 
 
-<div align="center">
-	<div><h1>나의 애칭<%=dto.getUserNick() %></h1></div>
+<div id="Umypage"  >
+	<div id="Umynick" >
+		<h1 id="Uh1" >나의 애칭<%=dto.getUserNick() %></h1>
+				<form action="TbUser.do" method="post">
+				<input type="hidden" name="command" value="userboardlist">
+				<input type="hidden" name="userId" value="<%=dto.getUserId()%>">
+					<table style="padding-left: 55%;">
+					<tr>
+					 <th>내글보기</th>
+					 <td>
+						<input type="password" name = "equserPw" style="float: center;">
+						<input type="submit" placeholder="비밀번호를 입력하세요" value="확인">
+					</td>
+					</tr>
+		
+					</table>
+		</form>
 	
-	<div>
+	
+	</div>
+	
+	<div id="Ucouple">
 	<table>
 		<tr>
 			<th>우리자기</th>
@@ -180,7 +199,18 @@ $(function(){
 			<th>email</th>
 			<td><%=dto.getUserEmail() %></td>
 		</tr>
-
+		<tr>
+			<th>생년월일</th>
+			<td>
+				<%=dto.getUserDob() %>
+			</td>
+		</tr>		
+		<tr>
+			<th>이름</th>
+			<td>
+				<%=dto.getUserName() %>
+			</td>
+		</tr>				
 		
 		<tr>
 			<th>회원정보 수정하기 </th>
@@ -189,26 +219,20 @@ $(function(){
 				
 			</td>
 		</tr>
-		
+
 	</table>
+			<div id="Udelete" >
+				<p id="tal">탈퇴를 원하시면 버튼을 눌러주세요 ㅠㅠ<p>
+				<input id="tal-but" type="button" value="탈퇴하기" onclick="layer_popup1('#popuplayer1');" />
+			</div>
+				
 		</div>
-		<div align="left">
-		<form action="TbUser.do" method="post">
-		<input type="hidden" name="command" value="userboardlist">
-		<input type="hidden" name="userId" value="<%=dto.getUserId()%>">
-			<table>
-			<tr>
-			 <th>내글보기</th>
-			 <td>
-				<input type="password" name = "equserPw">
-				<input type="submit" placeholder="비밀번호를 입력하세요" value="확인">
-			</td>
-			</tr>
+		
 
-			</table>
-		</form>
-		</div>
-
+		
+		
+</div>
+<div>
 	 <!-- 탈퇴팝업창 배경 -->
 	<div class="background">
 	<div class="dimBackground"></div>
@@ -228,12 +252,7 @@ $(function(){
 	</div>
 	</div>
 </div>
-	<div align="center" >	
-		탈퇴를 원하시면 버튼을 눌러주세요 ㅠㅠ<br/>
-	<input type="button" value="탈퇴하기" onclick="layer_popup1('#popuplayer1');" />
-
-	 </div>
 
 </body>
-
+	<%@ include file="./form/footer.jsp"%>
 </html>

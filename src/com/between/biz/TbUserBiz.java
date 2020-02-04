@@ -18,7 +18,7 @@ public interface TbUserBiz {
 		public TbUserDto snsIdCheck(String userId);
 		
 		//파트너 이름 혹은 닉네임 불러오기 
-		public TbUserDto partnerNickorName(int groupNum, String userId);
+		public String partnerNickorName(int groupNum, String userId);
 		
 		
 		//로그인 
