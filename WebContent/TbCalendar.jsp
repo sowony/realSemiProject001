@@ -64,14 +64,18 @@
 		
 		if(userInfo==null){
 			pageContext.forward("index.jsp");
-		}
-	
+		} 
+		
 		TbCalBiz biz = new TbCalBizImpl();
 
 		int groupNum = userInfo.getGroupNum();
 		
 
 		TbGroupDto groupDto = (TbGroupDto) request.getAttribute("groupDto");
+		
+		if(groupdto.getPartnerId()==null){
+			pageContext.forward("index.jsp");
+		}
 
 		int year = (int) request.getAttribute("year");
 		int month = (int) request.getAttribute("month");
