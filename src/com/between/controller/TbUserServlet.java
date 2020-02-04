@@ -152,7 +152,8 @@ public class TbUserServlet extends HttpServlet {
 			String userGender = request.getParameter("userGender");
 			//카카오는 연도는 주지않고 월일만 제공 앞부분은 고객이 직접 적도록 한다 
 			String userDob = request.getParameter("userDob");
-			
+			System.out.println(userId+"userId/"+userPw+"userPw");
+			System.out.println(userGender+"userGender");
 			TbUserDto snsdto = new TbUserDto();
 			snsdto.setUserId(userId);
 			snsdto.setUserPw(userPw);
