@@ -11,6 +11,14 @@
 	<%@ include file="./form/mainPageforMypage.jsp" %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<% 
+	TbUserDto dto = (TbUserDto)session.getAttribute("dto"); 
+	String partnerId = String.valueOf(request.getAttribute("partnerId"));
+	//메인 페이지에 담겨 있는 정보라서 쓰지 않음
+	//TbGroupDto groupdto = (TbGroupDto)session.getAttribute("groupdto");
+	//System.out.println(partnerId+"나의 유저페이지에서 보는....");
+	
+%>
 <link href="css/mypage.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- 일반 로그인 팝업창  -->
@@ -124,34 +132,24 @@ $(function(){
 		return false;
 	});
 });	
+
 </script>
 
 </head>
 <body>
 
-
-<% 
-	TbUserDto dto = (TbUserDto)session.getAttribute("dto"); 
-	String partnerId = String.valueOf(request.getAttribute("partnerId"));
-	//메인 페이지에 담겨 있는 정보라서 쓰지 않음
-	//TbGroupDto groupdto = (TbGroupDto)session.getAttribute("groupdto");
-	//System.out.println(partnerId+"나의 유저페이지에서 보는....");
-	
-%>
-
-
 <div id="Umypage"  >
 	<div id="Umynick" >
-		<h1 id="Uh1" >나의 애칭<%=dto.getUserNick() %></h1>
+		<div><h1 id="Uh1" >나의 애칭 : </h1><h1 id="Up"><%=dto.getUserNick() %></h1></div>
 				<form action="TbUser.do" method="post">
 				<input type="hidden" name="command" value="userboardlist">
 				<input type="hidden" name="userId" value="<%=dto.getUserId()%>">
-					<table style="padding-left: 55%;">
+					<table id="Utable1">
 					<tr>
 					 <th>내글보기</th>
 					 <td>
 						<input type="password" name = "equserPw" style="float: center;">
-						<input type="submit" placeholder="비밀번호를 입력하세요" value="확인">
+						<input type="submit" class="Umypage-btn" placeholder="비밀번호를 입력하세요" value="확인">
 					</td>
 					</tr>
 		
@@ -162,7 +160,7 @@ $(function(){
 	</div>
 	
 	<div id="Ucouple">
-	<table>
+	<table id="Utable2">
 		<tr>
 			<th>우리자기</th>
 			
@@ -180,8 +178,8 @@ $(function(){
 
 				<input type="text" id="partneridin" name="partnerId" placeholder="상대의 아이디  입력" >	
 						
-				<input type="button" id="idcheck" value="아이디 중복 체크" />
-                <input type="submit" id="pjoin" value="상대등록하기" />
+				<input type="button" id="idcheck" value="아이디 중복 체크" class="Umypage-btn"/>
+                <input type="submit" id="pjoin" value="상대등록하기" class="Umypage-btn" />
 
 
 <%
@@ -215,7 +213,7 @@ $(function(){
 		<tr>
 			<th>회원정보 수정하기 </th>
 			<td>
-				<input type="button" onclick="location.href='TbUser.do?command=userupdateform&partnerId=<%=partnerId %>'" value="수정" />
+				<input type="button" onclick="location.href='TbUser.do?command=userupdateform&partnerId=<%=partnerId %>'" value="수정" class="Umypage-btn"/>
 				
 			</td>
 		</tr>
@@ -223,7 +221,7 @@ $(function(){
 	</table>
 			<div id="Udelete" >
 				<p id="tal">탈퇴를 원하시면 버튼을 눌러주세요 ㅠㅠ<p>
-				<input id="tal-but" type="button" value="탈퇴하기" onclick="layer_popup1('#popuplayer1');" />
+				<input id="tal-but" type="button" value="탈퇴하기" onclick="layer_popup1('#popuplayer1');" class="Umypage-btn" />
 			</div>
 				
 		</div>
@@ -245,8 +243,8 @@ $(function(){
 		탈퇴하시면 같은 아이디로<br/>
 		 가입 불가합니다.<br/>
 		<br/><br/>
-		<input type="button" value="탈퇴하기" onclick="location.href='TbUser.do?command=userdelete&userId=<%=dto.getUserId()%>'"/>
-		<input type="button" value="취소" onclick="closelayer1();"/>
+		<input type="button" value="탈퇴하기" class="Umypage-btn" onclick="location.href='TbUser.do?command=userdelete&userId=<%=dto.getUserId()%>'"/>
+		<input type="button" value="취소" class="Umypage-btn" onclick="closelayer1();"/>
 	</div>
 	
 	</div>

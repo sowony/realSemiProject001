@@ -1,5 +1,5 @@
 #Umypage{
-	height: 1000px;
+	height: 400px;
 }
 #Umynick{
 	width:49%; 
@@ -9,8 +9,14 @@
 	  text-align: right; 
 }
 #Uh1{
-	margin-right: 70px;
+	margin-right: auto;
+	display: inline;
 	}
+#Up{
+	margin-right: 100px;
+	color: skyblue;
+	display: inline;
+}	
 	
 #Ucouple{
 		width:49%; 
@@ -27,5 +33,35 @@
 	font-size: 20px;
 }
 #tal-but{
-	margin-left: 50px;
+	margin-left: 20%;
+}
+
+.Umypage-btn{
+	border: none;
+	outline: none;
+	color: skyblue;
+	font-family: 'Jeju Gothic', cursive;
+	font-size: small;
+	padding-right: 0px;
+	padding-left: 20px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	background: white;
+}
+
+.Umypage-btn:hover{
+	color: darkviolet;
+	cursor: pointer;
+}
+#Utable1{
+	padding-top: 20%;
+	padding-left: 55%;
+}
+#Utable2{
+	margin-left: 10%
+}
+input{
+	border:none;
+	border-bottom-color: skyblue;
+	border-bottom-style: dashed;
 }
