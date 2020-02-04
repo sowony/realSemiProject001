@@ -74,8 +74,7 @@
   	
  	<div class="file_input_div">
  	<input type="button" value="사진을 올려주세요" class="file_input_button"/>
-	<input type="file" name="file1" id="fileupload" class="file_input_hidden" title="자기야 무슨 생각해?"
-		onchange="javascript:document.getElementById('fileName').value=this.value"/>
+	<input type="file" name="file1" id="fileupload" class="file_input_hidden" title="자기야 무슨 생각해?"/>
 	</div>
 	
  	
