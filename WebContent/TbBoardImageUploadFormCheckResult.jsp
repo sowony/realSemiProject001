@@ -17,6 +17,9 @@
 <script type="text/javascript" src="resources/jq/jquery-3.4.1.min.js"></script>
 </head>
 <body>
+
+<%@ include file="./form/mainPage.jsp" %>
+
 <%
 String imgWho = (String)request.getAttribute("imgWho");
 System.out.println("같은 데이터 사본입니다. : " +imgWho);
@@ -99,5 +102,8 @@ System.out.println("첫 키입니다 : "+ dto.get("contempt"));
   </div>
 </form>  
 </fieldset>
+
+<%@ include file="./form/footer.jsp" %>
+
 </body>
 </html>

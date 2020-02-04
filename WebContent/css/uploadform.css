@@ -9,10 +9,9 @@ position: relative;
 width: 140px;
 height:23px;
 overflow: hidden;
-background-color: yellow;
+/*background-color: yellow;*/
 border-radius: 4px 4px 4px 4px / 4px 4px 4px 4px;
 float: right;
-
 cursor: pointer;
 }
 
@@ -22,7 +21,7 @@ position: absolute;
 top: 0px;
 background-color: rgb(239,206,197);
 border-style: solid;
-border-color: rgb(239,206,197); /*rgb(209,175,148);*/
+border-color: skyblye; /*rgb(209,175,148);*/
 border-radius: 4px 4px 4px 4px / 4px 4px 4px 4px;
 color : rgb(91,44,54);
 cursor: pointer;

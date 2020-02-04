@@ -51,6 +51,31 @@
          </tr>
          <tr>
             <td colspan="2" align="right" >
+               <input type="submit" value="수정" class="btn_success"/>
+               <input type="button" value="취소" class="btn_delete" onclick="history.back();" /> 
+            </td>
+         </tr>
+      </table>
+   </fieldset>
+   </form>
+   </div>
+   <div>
+   <form action="TbBoard.do" method="post" >
+   <input type="hidden" name="command" value="boardupdateres"/>
+   <input type="hidden" name="boardNum" value="${board.boardNum }" />
+   <fieldset>
+      <table>
+         <tr>
+            <th>제목</th>
+            <td><input type="text" name="boardTitle" value="${board.boardTitle }"/></td>
+         </tr>
+         <tr>
+            <th>내용</th>
+            <td><textarea rows="15" cols="30" name="boardContent" id="summernote" >${board.boardContent }</textarea>
+            </td>
+         </tr>
+         <tr>
+            <td colspan="2" align="right" >
                <input type="submit" value="수정" style="border-right: 6px;"/>
                <input type="button" value="취소" style="border-right: 6px;" onclick="history.back();" /> 
             </td>

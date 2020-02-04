@@ -9,12 +9,19 @@
 <head>
 <meta charset="UTF-8">
 <title>사진올리는공간</title>
+<style type="text/css">
+#fileupload{
+	cursor: pointer;
+}
+
+</style>
 <%-- <%@ include file="./form/mainPage.jsp" %> --%>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/uploadform.css">
 </head>
 <!-- index폼. 파일을 업로드할 폼 -->
 <body>
+<%@ include file="./form/mainPage.jsp" %>
 
 <!-- jsp파일의 값을 java파일로 넘기기 위해선 input, text, textarea와 같은 기능을 사용해야한다.  -->
 <!-- forEach문을 사용해 여러 개의 값이 들어가는 경우 id가 아닌 name을 사용.(id는 유일한 값을 말하므로 사용해도 무용지물) -->
@@ -77,12 +84,15 @@
 	<input type="file" name="file1" id="fileupload" class="file_input_hidden" title="자기야 무슨 생각해?"/>
 	</div>
 	
- 	
-	
   </div>
 </form>   
+<div style="height:300px;" >
 
 
+
+
+</div>
+<%@ include file="./form/footer.jsp" %>
 
 </body>
 </html>
