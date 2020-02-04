@@ -64,14 +64,18 @@
 		
 		if(userInfo==null){
 			pageContext.forward("index.jsp");
-		}
-	
+		} 
+		
 		TbCalBiz biz = new TbCalBizImpl();
 
 		int groupNum = userInfo.getGroupNum();
 		
 
 		TbGroupDto groupDto = (TbGroupDto) request.getAttribute("groupDto");
+		
+		if(groupdto.getPartnerId()==null){
+			pageContext.forward("index.jsp");
+		}
 
 		int year = (int) request.getAttribute("year");
 		int month = (int) request.getAttribute("month");
@@ -114,6 +118,7 @@
 					<a href="TbCal.do?command=ddayEdit"><img alt="edit" src="images/pen.png" id="pen"></a> 
 				</h3>
 				<label>사랑한지? </label><span id="today"></span><br/>
+				<button onclick="location.href='TbCal.do?command=calendar'" id="today">TODAY</button>
 			</div>
 			<%
 				}
@@ -123,14 +128,14 @@
 			<table id="calendar">
 				<caption class="arrows">
 					<a
-						href="TbCal.do?command=minusYear&year=<%=year - 1%>&month=<%=month%>">◀︎◀︎</a>
+						href="TbCal.do?command=minusYear&year=<%=year - 1%>&month=<%=month%>"><img alt="arrow1" src="images/arrow01.png" class="arrow">︎</a>
 					<a
-						href="TbCal.do?command=minusMonth&year=<%=year%>&month=<%=month - 1%>">◁</a>
+						href="TbCal.do?command=minusMonth&year=<%=year%>&month=<%=month - 1%>"><img alt="arrow2" src="images/arrow02.png" class="arrow">︎</a>
 					<span class="y"><%=year%></span>년 <span class="m"><%=month%></span>월
 					<a
-						href="TbCal.do?command=addMonth&year=<%=year%>&month=<%=month + 1%>">▷</a>
+						href="TbCal.do?command=addMonth&year=<%=year%>&month=<%=month + 1%>"><img alt="arrow3" src="images/arrow03.png" class="arrow">︎</a>
 					<a
-						href="TbCal.do?command=addYear&year=<%=year + 1%>&month=<%=month%>">▶▶</a>
+						href="TbCal.do?command=addYear&year=<%=year + 1%>&month=<%=month%>"><img alt="arrow4" src="images/arrow04.png" class="arrow">︎</a>
 				</caption>
 				<tr id="days">
 					<th>SUN</th>

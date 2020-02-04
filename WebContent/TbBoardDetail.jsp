@@ -27,6 +27,7 @@
 <script src="resources/summernote/summernote-lite.js"></script>
 <script src="resources/summernote/lang/summernote-ko-KR.js"></script>
 <link rel="stylesheet" href="resources/summernote/summernote-lite.css">
+<link rel="stylesheet" href="css/btn_hover.css">
 
 <script type="text/javascript">
    $(function() {
@@ -49,7 +50,7 @@
    }
    #detail_cnt{      /*조회수*/
    border-radius: 10px;
-   background-color: rgb(251,201,197);
+   background-color: rgb(151,213,224);
    padding: 4px;
    text-align: center;
    width: 120px;
@@ -59,13 +60,6 @@
    }
    #detail_table >tbody> tr> th{
    width: 100px;
-   }
-   .pageNum{
-   text-decoration: none;
-   color:black;
-   }
-   .pageNum:hover{
-   color: rgb(132, 141, 197);
    }
 </style>
 
@@ -124,11 +118,11 @@
          </tr>
          <tr>
             <td>
-               <input type="button" value="답글작성" style="border-right: 6px;" onclick="location.href='TbBoard.do?command=boardanswer&boardNum=<%=board.getBoardNum()%>'"/>
+               <input type="button" value="답글작성" class="btn_reply" onclick="location.href='TbBoard.do?command=boardanswer&boardNum=<%=board.getBoardNum()%>'"/>
             </td>
             <td colspan="3" align="right" id=<%=(board.getUserId().equals(userInfo.getUserId())) ? "":"hideButton" %> >
-               <input type="submit" value="수정" style="border-right: 6px;"/>
-               <input type="button" value="삭제" style="margin-right: 170px; border-right: 6px;" onclick="location.href='TbBoard.do?command=boarddelete&boardNum=<%=board.getBoardNum()%>'"/>
+               <input type="submit" value="수정" class="btn_update"/>
+               <input type="button" value="삭제" class="btn_delete" style="margin-right: 170px;" onclick="location.href='TbBoard.do?command=boarddelete&boardNum=<%=board.getBoardNum()%>'"/>
             </td>
          </tr>
       </table>
@@ -141,13 +135,13 @@
          <input type="hidden" name="userId" value="<%=userInfo.getUserId()%>"/>
          <input type="hidden" name="reGender" value="<%=userInfo.getUserGender()%>"/>
          <input type="hidden" name="reNum" class="repleValue" value=""/>
-         <table>
+         <table style="padding-left: 100px;">
 <%
             for(int i = 0; i < list.size(); i++){
 %>
          
             <tr>
-            <td>
+            <td style="border:1px solid rgb(140,200,220);  border-radius: 15px;">
                
 <%
                for(int j = 0; j <list.get(i).getReTab();j++){
@@ -159,7 +153,7 @@
                 <%=list.get(i).getReContent()%></td>
                <td><%=list.get(i).getReGender()%> </td>
                <td align="right" >
-                  <input class="reple" type="button" value="답글" />
+                  <input class="reple" type="button" value="답글" class="btn_reply"/>
                   <input type="hidden" value="<%=list.get(i).getReNum()%>"/>
                   
             
@@ -167,7 +161,7 @@
                if(userInfo.getUserId().equals(list.get(i).getUserId())){
 %>
                
-                  <input type="button" value="삭제"/>
+                  <input type="button" value="삭제" class="btn_delete"/>
                </td>
             
 <%                  
@@ -180,26 +174,26 @@
             <tr>
                <td colspan="4" align="center">
                      <c:if test="${pageMaker.prev }">
-                        <a class="pageNum" href="TbBoard.do?command=boarddetail&boardnum=<%=board.getBoardNum() %>&page=1">처음으로</a>
-                        <a class="pageNum" href="TbBoard.do?command=boarddetail&boardnum=<%=board.getBoardNum() %>&page=${pageMaker.startPage-1 }">이전</a>
+                        <a href="TbBoard.do?command=boarddetail&boardnum=<%=board.getBoardNum() %>&page=1">처음으로</a>
+                        <a href="TbBoard.do?command=boarddetail&boardnum=<%=board.getBoardNum() %>&page=${pageMaker.startPage-1 }">이전</a>
                      </c:if>
                      <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
                          <a class="pageNum" href="TbBoard.do?command=boarddetail&boardnum=<%=board.getBoardNum()%>&page=${pageNum }">${pageNum } </a> 
                      </c:forEach>
                      <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-                        <a class="pageNum" href="TbBoard.do?command=boarddetail&boardnum=<%=board.getBoardNum() %>&page=${pageMaker.endPage+1 }">다음</a> 
-                        <a class="pageNum" href="TbBoard.do?command=boarddetail&boardnum=<%=board.getBoardNum() %>&page=${pageMaker.tempEndPage }" >마지막</a>
+                        <a href="TbBoard.do?command=boarddetail&boardnum=<%=board.getBoardNum() %>&page=${pageMaker.endPage+1 }">다음</a> 
+                        <a href="TbBoard.do?command=boarddetail&boardnum=<%=board.getBoardNum() %>&page=${pageMaker.tempEndPage }" >마지막</a>
                      </c:if>
                </td>
             </tr>
             <tr>
                <td>
-                  <textarea  name="reContent" rows="5" cols="35" style="border-left: 6em;" ></textarea>
+                  <textarea  name="reContent" rows="5" cols="35"></textarea>
                </td>
             </tr>
             <tr>
                <td align="right">
-                  <input type="submit" style="border-right: 6px;" value="댓글작성"/>
+                  <input type="submit" class="btn_reply" value="댓글작성"/>
                </td>
             </tr>
          </table>

@@ -73,17 +73,16 @@ public class TbCalServlet extends HttpServlet {
 		TbUserDto userInfo = (TbUserDto)session.getAttribute("dto");
 		
 		if(userInfo==null) {
-			response.sendRedirect("index.jsp");
+			responseAlert("로그인 해주세요", "index.jsp", response);
+		} else if(userInfo.getGroupNum()==0){
+			responseAlert("마이페이지에서 상대방을 등록해주세요", "index.jsp", response);
 		} else {
-			
 		
 		TbGroupDto groupDto = biz.findPartner(userInfo.getGroupNum());
-		System.out.println("groupDto"+groupDto);
+		//System.out.println("groupDto"+groupDto);
 		
 		if(command.equals("calendar")) {		
-			
-			//int date = Integer.parseInt(request.getParameter("date"));
-			
+						
 			request.setAttribute("groupDto", groupDto);
 			request.setAttribute("year", year);
 			request.setAttribute("month", month);
@@ -93,7 +92,6 @@ public class TbCalServlet extends HttpServlet {
 			dispatch("TbCalendar.jsp", request, response);
 			
 		} else if(command.equals("minusYear")) {
-			//year = year-1;
 			
 			request.setAttribute("groupDto", groupDto);
 			request.setAttribute("year", year);
@@ -141,8 +139,8 @@ public class TbCalServlet extends HttpServlet {
 			request.setAttribute("month", month);
 			request.setAttribute("date", date);
 			
-			System.out.println(list);
-			System.out.println(yyyyMMdd);
+			//System.out.println(list);
+			//System.out.println(yyyyMMdd);
 			
 			dispatch("TbCalendarList.jsp", request, response);
 			
@@ -252,8 +250,8 @@ public class TbCalServlet extends HttpServlet {
 			
 			int res = biz.updateEvent(calDto);
 			
-			System.out.println("수정된 시간 : "+hour);
-			System.out.println(calNum);
+			//System.out.println("수정된 시간 : "+hour);
+			//System.out.println(calNum);
 			
 			if(res > 0) {
 				
@@ -269,9 +267,9 @@ public class TbCalServlet extends HttpServlet {
 			month = Integer.parseInt(request.getParameter("month"));
 			int date = Integer.parseInt(request.getParameter("date"));
 			
-			System.out.println(year);
-			System.out.println(month);
-			System.out.println(date);
+			//System.out.println(year);
+			//System.out.println(month);
+			////System.out.println(date);
 			
 			
 			String yyyyMMdd = year+biz.isTwo(Integer.toString(month))+biz.isTwo(Integer.toString(date));
