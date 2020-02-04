@@ -22,9 +22,9 @@
 
 		if (email == "") {
 			alert("이메일을 입력해주세요");
-			
+
 		}
- 
+
 		else {
 			alert(email + "로 전송 되었습니다");
 			window.open("mailSend.jsp?email=" + email, "",
@@ -47,20 +47,21 @@
 	}
 
 	function pwChk() {
-		
+
 		var pw = document.getElementById("pw");
-		
+
 		var confirmPW = document.getElementsByName("uwerpwch")[0];
 
-		if(pw.value.length< 5 || pw.value.length >18 ){
+		if (pw.value.length< 5 || pw.value.length >18) {
 			alert("비밀번호를 5~17자리로 입력해주세요");
 			pw.focus();
-			document.getElementById("pw").value=document.getElementById("pwch").value="";
-			document.getElementById("same").innerHTML="비밀번호는 5~17자리입니다";
-			document.getElementById("same").style.color= "red";
-			
+			document.getElementById("pw").value = document
+					.getElementById("pwch").value = "";
+			document.getElementById("same").innerHTML = "비밀번호는 5~17자리입니다";
+			document.getElementById("same").style.color = "red";
+
 		}
-	
+
 		if (document.getElementById("pw").value != ""
 				&& document.getElementById("pwch").value != "") {
 			if (document.getElementById("pw").value == document
@@ -84,8 +85,7 @@
 		var year = document.getElementById("year");
 		var month = document.getElementById("month");
 		var date = document.getElementById("date");
-	 
-	
+
 		if (regist.pw.value != regist.pwch.value) {
 			alert("비밀번호가 틀립니다. 다시 한번 확인해 주세요");
 
@@ -136,7 +136,7 @@
 		var selectValue = document.getElementById("year");
 		var optionIndex = 0;
 		for (var i = year - 100; i <= year; i++) {
-			selectValue.add(new Option(i , i), optionIndex++);
+			selectValue.add(new Option(i, i), optionIndex++);
 		}
 	}
 	function appendMonth() {
@@ -149,7 +149,7 @@
 			if (i < 10) {
 				i = "0" + i;
 			}
-			selectValue.add(new Option(i , i), optionIndex++);
+			selectValue.add(new Option(i, i), optionIndex++);
 		}
 
 	}
@@ -164,28 +164,44 @@
 			if (i < 10) {
 				i = "0" + i;
 			}
-			selectValue.add(new Option(i , i), optionIndex++);
+			selectValue.add(new Option(i, i), optionIndex++);
 
 		}
 
 	}
-	
-	$(function(){
-		$("#mailsend").click(function(){
-			if($("#email").val().length == 0){
-			$("#mailsend").show();
-			}else{
+
+	$(function() {
+		$("#mailsend").click(function() {
+			if ($("#email").val().length == 0) {
+				$("#mailsend").show();
+			} else {
 				$("#mailsend").hide();
 			}
 		});
 	});
-	
-	
 </script>
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+* {
+	font-family: 'Jeju Gothic', cursive;
+}
+
+table {
+	width: 50%;
+	height: auto;
+	margin: 50px 25%;
+	align-self: center;
+}
+.button:hover{
+	cursor: pointer;
+}
+
+</style>
 </head>
 <body>
 
-
+	<%@ include file="./form/mainPage.jsp"%>
 
 	<%
 		String useremail = request.getParameter("useremail");
@@ -194,14 +210,14 @@
 	<form action="TbRegist.do" method="post" name="regist"
 		onsubmit="return validate()">
 		<input type="hidden" name="command" value="insert">
-		<table border="1">
+		<table>
 
 
 			<tr>
 				<th>아이디</th>
 				<td><input type="email" placeholder="ID는 이메일 형식입니다"
 					name="userid" required="required"> <input type="button"
-					value="ID중복확인" onclick="idChk()"></td>
+					value="ID중복확인" onclick="idChk()" class="button"></td>
 			</tr>
 
 			<tr>
@@ -218,21 +234,24 @@
 			<tr>
 				<th>비빌번호확인</th>
 				<td><input type="password" id="pwch" name="userpwch"
-					required="required" onChange="pwChk()" maxlength="19"/>&nbsp;&nbsp; <span
-					id="same"></span></td>
+					required="required" onChange="pwChk()" maxlength="19" />&nbsp;&nbsp;
+					<span id="same"></span></td>
 			</tr>
 
 			<tr>
 				<th>Email</th>
-				<td><input type="email" name="useremail" id="email" placeholder="'사이'의 소식을 받는 이메일"> 
-				<input type="hidden" name="to" value="hoyhi123@naver.com"> 
-				<input type="hidden" name="from" value="hoyhi123@naver.com"> 
-				<input type="button" id="mailsend" title="n" value="인증코드전송" onclick="emailsend()"></td>
+				<td><input type="email" name="useremail" id="email"
+					placeholder="'사이'의 소식을 받는 이메일"> <input type="hidden"
+					name="to" value="hoyhi123@naver.com"> <input type="hidden"
+					name="from" value="hoyhi123@naver.com"> <input
+					type="button" id="mailsend" title="n" value="인증코드전송"
+					onclick="emailsend()" class="button"></td>
 			</tr>
 			<tr>
 				<th>성별</th>
 				<td><input type="radio" name="usergender" checked="checked"
-					value="MALE" /> MALE <input type="radio" name="usergender" value="FEMALE" />FEMALE</td>
+					value="MALE" class="button" /> MALE <input type="radio" name="usergender"
+					value="FEMALE" class="button" />FEMALE</td>
 			</tr>
 			<tr>
 				<th>생년월일</th>
@@ -244,13 +263,14 @@
 			<tr>
 
 				<td colspan="3" align="right"><input type="submit" value="회원가입"
-					style="border-radius: 5px;" /> <input type="button" value="취소"
-					onclick="location.href='index.html'" style="border-radius: 5px;"></td>
+					style="border-radius: 5px;" class="button "/> <input type="button" value="취소"
+					onclick="location.href='index.html'" style="border-radius: 5px;" class="button"></td>
 
 			</tr>
 		</table>
 	</form>
 
+	<%@ include file="./form/footer.jsp"%>
 
 
 
