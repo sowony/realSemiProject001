@@ -14,14 +14,13 @@
 
 #calendar {
 	border-collapse: collapse;
-	background-color: rgb(138, 186, 211);
 	border-radius: 25px;
 }
 
 #days>th {
 	padding-bottom: 20px;
 	font-weight: normal;
-	color: white;
+	color: skyblue;
 }
 
 #calendar td {
@@ -48,7 +47,7 @@ a {
 .D-Day {
 	float: left;
 	width: 20%;
-	height: 500px;
+	height: 200px;
 	margin: 0 auto;
 }
 

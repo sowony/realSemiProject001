@@ -29,7 +29,7 @@
 #fMap {
 	float: left;
 	width: 20%;
-	height: 130px;	
+	height: 120px;
 	margin-top: 10px;
 }
 
