@@ -39,7 +39,7 @@ a {
 
 #wrap {
 	width: 100%;
-	margin: 0 10px;
+	margin: 10px;
 }
 #pen{
 	width: 20px;
@@ -70,5 +70,19 @@ a {
 }
 
 .dateNums:hover {
+	cursor: pointer;
+}
+
+.arrow{
+	width: 20px;
+	height: auto;
+}
+
+#today{
+	border-radius: 25px;
+	
+}
+#today:hover{
+	
 	cursor: pointer;
 }

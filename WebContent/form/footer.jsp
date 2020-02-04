@@ -22,16 +22,15 @@
 #fContact {
 	float: left;
 	width: 20%;
-	height: 50px;
-	
+	height: auto;
 }
 
 
 #fMap {
 	float: left;
 	width: 20%;
-	height: 150px;
-	
+	height: 130px;	
+	margin-top: 10px;
 }
 
 #fLogo {
@@ -42,6 +41,7 @@
 #fIntro {
 	float: left;
 	width: 20%;
+	height: auto;
 	margin-left: 20%;
 	
 }
@@ -50,6 +50,7 @@ p {
 }
 footer {
 	border-top: 1px solid gray;
+	height: 150px;
 }
 
 footer:hover {
