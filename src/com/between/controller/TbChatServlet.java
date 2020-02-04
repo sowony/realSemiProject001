@@ -38,7 +38,6 @@ public class TbChatServlet extends HttpServlet {
 //       String myRole = "mentee";
 //       System.out.println(menteeId);
 //       System.out.println("롤 : "+myRole);
-       
        TbChatBiz biz = new TbChatBizImpl();
        // 이 안에서 멘토,멘티 둘을 나눠서 사용하기.
        // 1. if문으로 나눔
@@ -57,7 +56,6 @@ public class TbChatServlet extends HttpServlet {
        String matchNo = userInfo.getGroupNum()+"";
        String mentorId = "";
        String menteeId = "";
-       
        
        if(userInfo.getUserId().equals(dto.getUserId())) {
     	   // 그룹테이블에 userId에 들어가 있는 경우 멘티 방향으로
@@ -79,7 +77,7 @@ public class TbChatServlet extends HttpServlet {
            String menteeId_json = menteeId;
            String No_json = dto.getGroupNum()+"";
            
-           menteeIdArr[0] = menteeId+"";
+           menteeIdArr[0] = menteeId;
            matchNoArr[0] = dto.getGroupNum()+"";
            
 //           for(int i=0; i<1;i++) {

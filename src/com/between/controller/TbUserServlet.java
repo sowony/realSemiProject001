@@ -92,9 +92,13 @@ public class TbUserServlet extends HttpServlet {
 				//만약 커플 그룹 정보가 있다면 담아서 보내주고 없으면 회원정보만 보내주기 
 				if(groupdto != null) {
 					HttpSession session =  request.getSession(true);
+					String PartnerId = biz.partnerIdShow(groupdto.getGroupNum(), userId);
+					String partnerNickOrName = biz.partnerNickorName(groupdto.getGroupNum(), PartnerId);
+					
+					request.setAttribute("partnerNickOrName", partnerNickOrName);
 					session.setAttribute("dto", dto);
 					session.setAttribute("groupdto", groupdto);
-					response.sendRedirect("index.jsp");
+					dispatch("index.jsp", request, response);
 					
 				}else if(groupdto == null){
 					HttpSession session =  request.getSession(true);
@@ -127,6 +131,10 @@ public class TbUserServlet extends HttpServlet {
 				//만약 커플 그룹 정보가 있다면 담아서 보내주고 없으면 회원정보만 보내주기 
 				if(groupdto != null) {
 					HttpSession session =  request.getSession(true);
+					String PartnerId = biz.partnerIdShow(groupdto.getGroupNum(), userId);
+					String partnerNickOrName = biz.partnerNickorName(groupdto.getGroupNum(), PartnerId);
+					
+					request.setAttribute("partnerNickOrName", partnerNickOrName);
 					session.setAttribute("dto", dto);
 					session.setAttribute("groupdto", groupdto);
 					response.sendRedirect("index.jsp");
@@ -210,6 +218,10 @@ public class TbUserServlet extends HttpServlet {
 				System.out.println("그룹 정보에 대한 값 "+groupdto);
 				if(groupdto != null) {
 					HttpSession session =  request.getSession(true);
+					String PartnerId = biz.partnerIdShow(groupdto.getGroupNum(), userId);
+					String partnerNickOrName = biz.partnerNickorName(groupdto.getGroupNum(), PartnerId);
+					
+					request.setAttribute("partnerNickOrName", partnerNickOrName);
 					session.setAttribute("dto", dto);
 					session.setAttribute("groupdto", groupdto);
 					response.sendRedirect("index.jsp");
@@ -275,7 +287,10 @@ public class TbUserServlet extends HttpServlet {
 				int res = biz.partnerIdInsertChekXnDelete(groupNum);
 				if(res >0) {
 					int res2 = biz.partnerNumUpdateUTDelete(groupNum);
-					if(res2 >0) {
+					if(res2 >0) {			
+						HttpSession session = request.getSession();
+						TbGroupDto groupdto = biz.partnerDtoDummy(userId);
+						session.setAttribute("groupdto", groupdto);
 						responseAlert("커플등록 거절 하였습니다", "index.jsp", response);	
 					}
 					

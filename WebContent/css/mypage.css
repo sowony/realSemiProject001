@@ -1,0 +1,31 @@
+#Umypage{
+	height: 1000px;
+}
+#Umynick{
+	width:49%; 
+	float:left;
+	 margin: 50px 0; 
+	  padding: 0; 
+	  text-align: right; 
+}
+#Uh1{
+	margin-right: 70px;
+	}
+	
+#Ucouple{
+		width:49%; 
+		 border-left: 1px solid gray;
+		 margin: 50px 0; 
+		 padding: 0; 
+		 float:left;
+	}
+#Udelete{
+	margin-top: 10%
+}	
+#tal {
+	margin-left: 50px;
+	font-size: 20px;
+}
+#tal-but{
+	margin-left: 50px;
+}

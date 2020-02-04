@@ -61,8 +61,8 @@
 	SELECT * FROM TB_USER WHERE USER_ID =#{userId} AND USER_DEACT= 'N'
 	</select>
 	
-	<select id="partnerNickorName" parameterType="int" resultMap="TbUserResultMap" >
-	SELECT USER_ID,USER_NAME FROM TB_USER WHERE GROUP_NUM = #{groupNum} AND USER_ID = #{userId}
+	<select id="partnerNickorName" parameterType="map" resultMap="TbUserResultMap" >
+	SELECT USER_ID,USER_NAME FROM TB_USER WHERE GROUP_NUM = #{groupNum} AND USER_ID = #{partnerId}
 	</select>
 
  	<insert id="userInsert" parameterType="TbUserDto">

@@ -33,9 +33,22 @@ public class TbUserBizImpl implements TbUserBiz{
 	
 	//파트너 아이디 혹은 이름 갖고오기 
 	@Override
-	public TbUserDto partnerNickorName(int groupNum, String partnerId) {
+	public String partnerNickorName(int groupNum, String partnerId) {
 		
-		return dao.partnerNickorName(groupNum,partnerId);
+		TbUserDto dto = dao.partnerNickorName(groupNum, partnerId);
+		String userNick = dto.getUserNick();
+		String userName = dto.getUserName();
+		System.out.println(groupNum+"groupNum");
+		System.out.println(partnerId+"partnerId");
+		System.out.println(userNick+"userNick, userBiz");
+		System.out.println(userName+"userName");
+		if(userNick==null) {
+			//별명이 없다면 유저이름을 리턴
+			return userName;
+		} else {
+			//별명이 있다면 별명을 리턴
+			return userNick;
+		}
 	}
 
 	@Override
