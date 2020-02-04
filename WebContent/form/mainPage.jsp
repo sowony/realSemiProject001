@@ -64,10 +64,16 @@
 	z-index: 10;
 	color: #000;
 }
+
 .loginBtn{
 	background-color: #f1f1f1;
 	border: none;
 	outline: none;
+}
+
+.loginBtn:hover{
+	color:darkviolet;
+	cursor: pointer;
 }
 </style>
 <!-- 일반 로그인 스크립트  -->
@@ -418,17 +424,18 @@ function idChkg(userId, userPw, userEmail){
 				<li><a href="TbBoardImageUploadForm.jsp">사진분석</a></li>
 				<li></li>
 			</ul>
-			<ul>
-				<li><p>커플사이</p></li>
-				<li><a href="">앨범</a></li>
-				<li><a href="TbCal.do?command=calendar">다이어리</a></li>
-				<li><a href="TbChat.do?command=enterChat">사이톡</a></li>
-				<li><a href="">영상통화</a></li>
+			<ul><!-- 
+				<li><p>사이다</p></li>
+				<li><a href="">전문상담사</a></li> -->
+				<li><img src="" ></li>
 			</ul>
 			<ul>
-				<li><p>사이다</p></li>
-				<li><a href="">전문상담사</a></li>
+				<li><p>커플사이</p></li>
+				<!-- <li><a href="">앨범</a></li> -->
+				<li><a href="TbCal.do?command=calendar">다이어리</a></li>
+				<li><a href="TbChat.do?command=enterChat">사이톡</a></li>
 				<li><a href="TbBoard.do?command=boardlist">속닥속닥</a></li>
+				<!-- <li><a href="">영상통화</a></li> -->
 			</ul>
 		</div>
 	</nav>
@@ -440,27 +447,26 @@ function idChkg(userId, userPw, userEmail){
 
 	<!-- 큰 div로 묶었음 -->
 	<div>
-
-
 		<div class="background">
 			<div class="dim-background"></div>
 			<div id="popup-layer" class="popup-layer">
 
 				<!-- 로그인 팝업창 -->
 				<div align="center">
-					<h1>로그인 하세요</h1>
+					<img alt="" src="images/logo.gif"class="logo">
 
 					<!-- 구글 로그인 -->
 					<div class="g-signin2" data-width="220" data-height="45"
 						data-onsuccess="onSignIn" data-longtitle="true"></div>
-
+					<br/>
 					<!-- 카카오톡 로그인 -->
 					<div>
 						<a href="#" onclick="kakaologin();return false;"><img
 							src="images/kakao_account_login_btn_medium_narrow.png"
 							alt="카카오로그인"></a> 
 					</div>
-
+					<br/>
+					
 					<!-- 일반 로그인 -->
 					<div>
 						<form action="TbUser.do" method="post">
@@ -468,11 +474,12 @@ function idChkg(userId, userPw, userEmail){
 							<table>
 								<tr>
 									<th>아이디</th>
-									<td><input type="text" name="userId" id="userId"></td>
+									<td><input style="width:150px;" type="text" name="userId" id="userId"></td>
 								</tr>
 								<tr>
+								
 									<th>비밀번호</th>
-									<td><input type="password" name="userPw" id="userPw"></td>
+									<td><input style="width:150px;" type="password" name="userPw" id="userPw"></td>
 								</tr>
 								<tr>
 									<!-- location.href='TbUser.do?command=main -->

@@ -1,0 +1,24 @@
+.btn_delete:hover{ 
+   border-right: 6px;
+   cursor: pointer;
+}
+
+.btn_update:hover{
+   border-right: 6px;
+   cursor: pointer;
+}
+
+.btn_success:hover{
+   border-right: 6px;
+   cursor: pointer;
+}
+
+.btn_comment:hover{
+   border-right: 6px;
+   cursor: pointer;
+}
+
+.btn_reply:hover{
+   border-right: 6px;
+   cursor: pointer;
+}

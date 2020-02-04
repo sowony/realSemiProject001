@@ -18,9 +18,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@ include file="./form/mainPage.jsp" %>
 <%
-	TbUserDto userInfo = (TbUserDto)session.getAttribute("dto");
+	//TbUserDto userInfo = (TbUserDto)session.getAttribute("dto");
 	TbBoardDto board = (TbBoardDto)request.getAttribute("board");
 
 	if(userInfo==null){
@@ -55,6 +55,6 @@
 	</fieldset>
 	</form>
 	</div>
-
+<%@ include file="./form/footer.jsp" %>
 </body>
 </html>

@@ -19,7 +19,7 @@ import org.apache.http.util.EntityUtils;         //for api입니다.
 //입력데이터를 가져올 위치를 지정합니다.
 public class Main {
    // Replace <Subscription Key> with your valid subscription key.
-   private static final String subscriptionKey = "7680a810d118477880b667029387a143";
+   private static final String subscriptionKey = "0317fc9c56a84b8b89d4ffea7ceff3c5";
 //엔드포인트
    private static final String uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
 

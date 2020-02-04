@@ -41,44 +41,39 @@
       text-decoration: none;
       color: black;
    }
-   .title:hover {
-      color: rgb(132, 141, 197);
+   .title:hover{
+		color: skyblue;
    }
    
    
-   #list >table > tbody > tr > td:nth-child(1){ 
-   background-color : rgb(209,175,148);
-   border-right: 1px solid black;
+   #list >table > tbody > tr > td:nth-child(1){ /*글번호 세로 라인*/
    }
-   #list >table > tbody > tr > td:nth-child(5){
+   #list >table > tbody > tr > td:nth-child(5){ }
    
-   }
    #list >table > tbody > tr:nth-child(12)>td{   /*글쓰기버튼td에 전이된 css지우기*/
    background-color: white;
    border-right: 0px solid white;
    }
-   
+
    #list >table > tbody > tr:nth-child(13)>td{   /*글쓰기버튼td에 전이된 css지우기*/
-   background-color: rgb(197,143,105);
+   background-color: rgb(85,135,162);   /* 글번호 */
    border-right: 0px solid white;
    }
    #list > table >tbody > tr:nth-child(1)>th{
-   background-color: rgb(197,143,105);
+   background-color: rgb(85,135,162);   /* 목록 */
+   color : white;
    font-weight: bold;
    }
    #tag_write_btn{
-   border-radius: 6px;
+   		border-radius: 6px;
    }
-    .page{
-      margin: 0 5px;
-      color: black;
-      text-decoration: none;
+   .BoardBtn{
+   		color:black;
+   		text-decoration: none;
    }
-   .page:hover{
-      color: rgb(132, 141, 197);
+   .BoardBtn:hover{
+   		color: skyblue;
    }
-   
-   
 </style>
 </head>
 <body>
@@ -88,8 +83,8 @@
    <!-- head를 잡아는 두되 쓰지는 않고있다. -->
 <div>
    <div style="text-align: center; width: 100%; margin-top: 10px; margin-bottom: 20px; height:40px; line-height: 10px;">
-   <div id="head" style=" display: inline-block; width: 76%; margin-top: 10px; margin-bottom: 20px; height:40px; background-color: rgb(209,175,148);">
-   <h3 style="color: rgb(239,206,197);  ">속닥속닥... 여러분의 사연을 속삭여보세요</h3>
+   <div id="head" style=" display: inline-block; width: 46%; margin-top: 10px; margin-bottom: 20px; height:40px; background-color: rgb(130,190,210);">
+   <h3 style="color: white;">속닥속닥... 여러분의 사연을 속삭여보세요</h3>
    </div>
    
    </div>
@@ -146,15 +141,15 @@
             <tr>
                <td colspan="5" align="center">
                      <c:if test="${pageMaker.prev }">
-                        <a class="pageNum" href="TbBoard.do?command=boardlist&page=1">처음으로</a>
-                        <a class="pageNum" href="TbBoard.do?command=boardlist&page=${pageMaker.startPage-1 }">이전</a>
+                        <a class="BoardBtn" href="TbBoard.do?command=boardlist&page=1">처음으로</a>
+                        <a class="BoardBtn" href="TbBoard.do?command=boardlist&page=${pageMaker.startPage-1 }">이전</a>
                      </c:if>
                      <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
-                         <a class="page" href='<c:url value="TbBoard.do?command=boardlist&page=${pageNum }"/>'>${pageNum } </a> 
+                         <a class="BoardBtn" href='<c:url value="TbBoard.do?command=boardlist&page=${pageNum }"/>'>${pageNum } </a> 
                      </c:forEach>
                      <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-                        <a class="pageNum" href="TbBoard.do?command=boardlist&page=${pageMaker.endPage+1 }">다음</a> 
-                        <a class="pageNum" href="TbBoard.do?command=boardlist&page=${pageMaker.tempEndPage }" >마지막</a>
+                        <a class="BoardBtn" href="TbBoard.do?command=boardlist&page=${pageMaker.endPage+1 }">다음</a> 
+                        <a class="BoardBtn" href="TbBoard.do?command=boardlist&page=${pageMaker.tempEndPage }" >마지막</a>
                      </c:if>
                </td>
             </tr>
