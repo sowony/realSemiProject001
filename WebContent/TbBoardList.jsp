@@ -77,6 +77,8 @@
    .page:hover{
       color: rgb(132, 141, 197);
    }
+   
+   
 </style>
 </head>
 <body>
