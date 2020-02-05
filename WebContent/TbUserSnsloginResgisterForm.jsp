@@ -92,7 +92,7 @@ function appendDay(){
 %>
 
 
-<div>
+<div align="center" >
 <h1>필수 정보 사항 기재</h1>
 	<form action="TbUser.do" method="post">
 		<input type="hidden" name="command" value="snsloginregisterformres">
@@ -206,7 +206,7 @@ function appendDay(){
 	</form>
 </div>
 
-
+<%@ include file="./form/footer.jsp" %>
 </body>
 
 

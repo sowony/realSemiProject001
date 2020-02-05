@@ -149,7 +149,7 @@ $(function(){
 					 <th>내글보기</th>
 					 <td>
 						<input type="password" name = "equserPw" style="float: center;">
-						<input type="submit" class="Umypage-btn" placeholder="비밀번호를 입력하세요" value="확인">
+						<input type="submit" id="partneridin1"class="Umypage-btn" placeholder="비밀번호를 입력하세요" value="확인">
 					</td>
 					</tr>
 		
@@ -243,8 +243,8 @@ $(function(){
 		탈퇴하시면 같은 아이디로<br/>
 		 가입 불가합니다.<br/>
 		<br/><br/>
-		<input type="button" value="탈퇴하기" class="Umypage-btn" onclick="location.href='TbUser.do?command=userdelete&userId=<%=dto.getUserId()%>'"/>
-		<input type="button" value="취소" class="Umypage-btn" onclick="closelayer1();"/>
+		<input type="button" value="탈퇴하기" class="Umypage-btn1" onclick="location.href='TbUser.do?command=userdelete&userId=<%=dto.getUserId()%>'"/>
+		<input type="button" value="취소" class="Umypage-btn1" onclick="closelayer1();"/>
 	</div>
 	
 	</div>

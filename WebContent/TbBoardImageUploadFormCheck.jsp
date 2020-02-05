@@ -8,7 +8,6 @@
 <%-- <%@ include file="./form/mainPage.jsp" %> --%>
 </head>
 <body>
-<%@ include file="./form/mainPage.jsp" %>
 <% 
 Object file1= request.getAttribute("file1");
 System.out.println("현재 Check.jsp, 서블릿에서 받은 폴더 경로 : " + file1);	//폴더경로
@@ -40,6 +39,5 @@ System.out.println("현재 Check.jsp, 서블릿에서 받은 파일명 : " +imgW
       <input type="submit" value="확인">
 </form>   
 </div>
-<%@ include file="./form/footer.jsp" %>
 </body>
 </html>

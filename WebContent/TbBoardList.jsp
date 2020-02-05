@@ -102,7 +102,7 @@
             <col width="100px">
             <col width="100px">
             <tr>
-               <th class="boardTitle" >글번호</th>
+               <th class="boardTitle">글번호</th>
                <th class="boardTitle">제목</th>
                <th class="boardTitle">작성자</th>
                <th class="boardTitle">조회수</th>
