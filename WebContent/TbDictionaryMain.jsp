@@ -29,14 +29,11 @@
 }
 
 #all {
+	text-align: center;
 	width: 60%;
 	margin: 10px 20%;
 }
 
-#list > table {
-	width: 60%;
-	margin: 10px 20%;
-}
 
 #definition{
 	width: 60%;
@@ -96,11 +93,11 @@ textarea{
 						for (int i = 0; i < list.size(); i++) {
 					%>
 					<tr class="row">
-						<td><%=list.get(i).getDicKeyword()%></td>
+						<td><a style="text-decoration:none;color:black;" href="TbDic.do?command=search&keyword=<%=list.get(i).getDicKeyword()%>" ><%=list.get(i).getDicKeyword()%></a></td>
 						<td><input class="dicBtn" type="button"
 							value="<%=list.get(i).getDicLike()%>" /></td>
 						<td><input class="dicBtn" id="like" type="button" value="공감"
-							onclick="location.href='TbDic.do?command=like'" /></td>
+							onclick="location.href='TbDic.do?command=like&dicNum=<%=list.get(i).getDicNum()%>'" /></td>
 					</tr>
 					<%
 						}
@@ -132,16 +129,15 @@ textarea{
 
 
 		
-		<div id="left">
 
-
-			<table border="1">
+			<table >
 
 				<col width="200px">
 				<col width="200px">
 
 				<tr>
-					<td>남자어</td>
+					<td align="left"> 남자어</td>
+					<td align="right" >여자어</td>
 				</tr>
 				<tr>
 					<%
@@ -153,35 +149,22 @@ textarea{
 					<%
 						}
 					%>
-				</tr>
-			</table>
-		</div>
-
-		<div id="right">
-			<table border="1">
-				<col width="200px">
-				<col width="200px">
-				<tr>
-					<td>여자어</td>
-				</tr>
-				<tr>
 					<%
 						if (dto != null) {
 					%>
 
-					<td><textarea rows="10" cols="20"><%=dto.getDicFemale()%></textarea>
+					<td align="right" ><textarea rows="10" cols="20"><%=dto.getDicFemale()%></textarea>
 					</td>
 					<%
 						}
 					%>
 				</tr>
 				<tr>
-					<td><input type="button" value="글작성하기"
-						onclick="popup();" /></td>
+					<td align="right" colspan="2">
+						<input type="button" value="글작성하기" onclick="popup();" />
+					</td>
 				</tr>
 			</table>
-
-		</div>
 		</div>
 	<%@ include file="./form/footer.jsp"%>
 </body>

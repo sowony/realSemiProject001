@@ -16,6 +16,53 @@
 <%@ include file="./form/mainPage.jsp" %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+   #board{
+      background-color: rgb(240,240,240);
+      width:100%;
+      margin: 0 auto;
+   }
+   
+   #list{
+      width: 700px;
+      margin: 0 auto;
+      background-color: white;
+      color: black;
+   }
+   
+   .title{
+      text-decoration: none;
+      color: black;
+   }
+   .title:hover{
+		color: skyblue;
+   }
+   
+   #list >table > tbody > tr:nth-child(12)>td{   /*글쓰기버튼td에 전이된 css지우기*/
+   background-color: white;
+   border-right: 0px solid white;
+   }
+
+   #list >table > tbody > tr:nth-child(13)>td{   /*글쓰기버튼td에 전이된 css지우기*/
+   background-color: rgb(85,135,162);   /* 글번호 */
+   border-right: 0px solid white;
+   }
+   #list > table >tbody > tr:nth-child(1)>th{
+   background-color: rgb(85,135,162);   /* 목록 */
+   color : white;
+   font-weight: bold;
+   }
+   #tag_write_btn{
+   		border-radius: 6px;
+   }
+   .BoardBtn{
+   		color:black;
+   		text-decoration: none;
+   }
+   .BoardBtn:hover{
+   		color: skyblue;
+   }
+</style>
 </head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -68,9 +115,8 @@
 
 <body>
 
-<div>
+<div id="board" >
 
-	<h1>내글 목록 보기 </h1>
 	<div align="right" >
 		<form action="TbUser.do" method="post">
 			<input type="hidden" name="command" value="search">
@@ -81,12 +127,11 @@
 		</form>	
 	</div>
 	
-	<div>
+	<div align="center" >
 	<form action="TbUser.do" method="post" id="muldelform">
 	<input type="hidden" name="command" value="muldel">
 	<input type="hidden" name="userId" value="<%=dto.getUserId() %>">
 
-	<fieldset>
 		<table>
 			<col width="20px" >
 			<col width="100px" >
@@ -113,13 +158,13 @@
 			
 %>
 						<tr>
-							<td><input type="checkbox" name="chk" value="<%=list.get(i).getBoardNum() %> " ></td>
-							<td align="center" ><%=list.get(i).getBoardNum() %></td>
+							<td class="listOp" ><input type="checkbox" name="chk" value="<%=list.get(i).getBoardNum() %> " ></td>
+							<td class="listOp"align="center" ><%=list.get(i).getBoardNum() %></td>
 							<td>
-								<a href="TbUser.do?command=userboarddetail&boardNum=<%=list.get(i).getBoardNum() %>" ><%=list.get(i).getBoardTitle() %></a>
+								<a  class="title" href="TbUser.do?command=userboarddetail&boardNum=<%=list.get(i).getBoardNum() %>" ><%=list.get(i).getBoardTitle() %></a>
 							</td>
-							<td align="center"><%=list.get(i).getBoardGender() %></td>
-							<td align="center"><%=list.get(i).getBoardDate() %></td>
+							<td class="listOp" align="center"><%=list.get(i).getBoardGender() %></td>
+							<td class="listOp" align="center"><%=list.get(i).getBoardDate() %></td>
 						</tr>
 
 <%		
@@ -136,26 +181,25 @@
 	<tr>
 		<td colspan="5" align="center">
 			<c:if test="${pageMaker.prev}">
-				<a href="TbUser.do?command=mylist&page=1">처음으로</a>
-				<a href="TbUser.do?command=mylist&page=${pageMaker.startPage-1 }">이전</a>
+				<a class="BoardBtn" href="TbUser.do?command=mylist&page=1">처음으로</a>
+				<a class="BoardBtn" href="TbUser.do?command=mylist&page=${pageMaker.startPage-1 }">이전</a>
 			</c:if>
 			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
-				<a href='<c:url value="TbUser.do?command=mylist&page=${pageNum }"/>'>${pageNum }</a>
+				<a class="BoardBtn" href='<c:url value="TbUser.do?command=mylist&page=${pageNum }"/>'>${pageNum }</a>
 			</c:forEach>
 			<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-				<a href="TbUser.do?command=mylist&page=<%=pageMaker.getEndPage()+1%>">다음</a>
-				<a href="TbUser.do?command=mylist&page=<%=pageMaker.getTempEndPage()%>">마지막페이지</a>
+				<a class="BoardBtn" href="TbUser.do?command=mylist&page=<%=pageMaker.getEndPage()+1%>">다음</a>
+				<a class="BoardBtn" href="TbUser.do?command=mylist&page=<%=pageMaker.getTempEndPage()%>">마지막페이지</a>
 			</c:if>
 	</td>	
  </tr>
 			
 		</table>
-	</fieldset>
 	</form>
 	</div>
-	<input type="button" value="로그인뒤 보이는 첫페이지로" onclick="location.href='TbUser.do?command=loginres&userId=<%=dto.getUserId() %>&userPw=<%=dto.getUserPw() %>'">
-		<input type="button" value="로그아웃" onclick="location.href='TbUser.do?command=logout'">
 </div>
+
+<%@ include file="./form/footer.jsp" %>
 
 </body>
 </html>

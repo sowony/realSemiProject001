@@ -74,6 +74,11 @@
    .BoardBtn:hover{
    		color: skyblue;
    }
+   .boardTitle{
+   background-color: rgb(85,135,162);   /* 목록 */
+   color : white;
+   font-weight: bold;
+   }
 </style>
 </head>
 <body>
@@ -97,11 +102,11 @@
             <col width="100px">
             <col width="100px">
             <tr>
-               <th>글번호</th>
-               <th>제목</th>
-               <th>작성자</th>
-               <th>조회수</th>
-               <th>작성일</th>
+               <th class="boardTitle">글번호</th>
+               <th class="boardTitle">제목</th>
+               <th class="boardTitle">작성자</th>
+               <th class="boardTitle">조회수</th>
+               <th class="boardTitle">작성일</th>
             </tr>
             <c:choose>
                <c:when test="${empty list }">

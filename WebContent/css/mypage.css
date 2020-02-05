@@ -43,7 +43,7 @@
 	font-family: 'Jeju Gothic', cursive;
 	font-size: small;
 	padding-right: 0px;
-	padding-left: 20px;
+	padding-left: 0px;
 	padding-top: 0px;
 	padding-bottom: 0px;
 	background: white;
@@ -53,14 +53,38 @@
 	color: darkviolet;
 	cursor: pointer;
 }
+
+.Umypage-btn1{
+	border: none;
+	outline: none;
+	color: skyblue;
+	font-family: 'Jeju Gothic', cursive;
+	font-size: small;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	
+}
+
+.Umypage-btn1:hover{
+	color: darkviolet;
+	cursor: pointer;
+}
+
 #Utable1{
 	padding-top: 20%;
 	padding-left: 55%;
 }
 #Utable2{
-	margin-left: 10%
+	margin-left: 1%
 }
-input{
+#partenridin1{
+	border:none;
+	border-bottom-color: skyblue;
+	border-bottom-style: dashed;
+}
+#partenridin{
 	border:none;
 	border-bottom-color: skyblue;
 	border-bottom-style: dashed;

@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.between.biz.TbDictionaryBiz;
 import com.between.biz.TbDictionaryBizImpl;
 import com.between.dto.TbDictionaryDto;
+import com.between.dto.TbUserDto;
 
 import static com.between.controller.ServletUtil.*;
 
@@ -76,7 +78,21 @@ public class TbDictionaryServlet extends HttpServlet {
 			   
 			out.print(str);
 		} else if(command.equals("like")) {
+			int dicNum = Integer.parseInt(request.getParameter("dicNum"));
+			HttpSession session = request.getSession();
+			TbUserDto dto = (TbUserDto)session.getAttribute("dto");
+			String userId = dto.getUserId();
 			
+			TbDictionaryDto dicDto = new TbDictionaryDto();
+			dicDto.setUserId(userId);
+			dicDto.setDicNum(dicNum);
+			int res = biz.insertLike(dicDto);
+			
+			if(res>0) {
+				response.sendRedirect("TbDic.do?command=dictionaryMain");
+			} else {
+				responseAlert("fail", "index.jsp", response);
+			} 
 		}
 	
 	}

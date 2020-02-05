@@ -83,7 +83,11 @@
 </script>
 <%
 //   TbUserDto userInfo = (TbUserDto)session.getAttribute("dto");
-   TbBoardDto board = (TbBoardDto)request.getAttribute("board");
+		if(userInfo==null){
+    		pageContext.forward("index.jsp");
+ 		}
+
+	TbBoardDto board = (TbBoardDto)request.getAttribute("board");
    
    PageMaker pageMaker = (PageMaker)request.getAttribute("pageMaker");
    List<TbReBoardDto> list = (List<TbReBoardDto>)request.getAttribute("list");

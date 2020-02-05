@@ -28,13 +28,20 @@ public class TbDictionaryBizImpl extends SqlMapConfig implements TbDictionaryBiz
 
 	@Override
 	public int insertLike(TbDictionaryDto dto) {
-		return dao.insertLike(dto);
+		
+		int res = 0;
+		
+		int insertLike = dao.insertLike(dto);
+		if(insertLike>0) {
+			int updateLike = dao.updateLike(dto.getDicNum());
+			if(updateLike>0) {
+				res = updateLike;
+			}
+		} 
+		
+		return res;
 	}
 
-	@Override
-	public int updateLike(TbDictionaryDto dto) {
-		return dao.updateLike(dto);
-	}
 
 	@Override
 	public int delete(TbDictionaryDto dto) {
