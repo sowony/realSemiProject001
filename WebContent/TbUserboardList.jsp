@@ -38,11 +38,6 @@
 		color: skyblue;
    }
    
-   
-   #list >table > tbody > tr > td:nth-child(1){ /*글번호 세로 라인*/
-   }
-   #list >table > tbody > tr > td:nth-child(5){ }
-   
    #list >table > tbody > tr:nth-child(12)>td{   /*글쓰기버튼td에 전이된 css지우기*/
    background-color: white;
    border-right: 0px solid white;
@@ -120,7 +115,7 @@
 
 <body>
 
-<div>
+<div id="board" >
 
 	<div align="right" >
 		<form action="TbUser.do" method="post">
@@ -163,13 +158,13 @@
 			
 %>
 						<tr>
-							<td><input type="checkbox" name="chk" value="<%=list.get(i).getBoardNum() %> " ></td>
-							<td align="center" ><%=list.get(i).getBoardNum() %></td>
+							<td class="listOp" ><input type="checkbox" name="chk" value="<%=list.get(i).getBoardNum() %> " ></td>
+							<td class="listOp"align="center" ><%=list.get(i).getBoardNum() %></td>
 							<td>
-								<a href="TbUser.do?command=userboarddetail&boardNum=<%=list.get(i).getBoardNum() %>" ><%=list.get(i).getBoardTitle() %></a>
+								<a  class="title" href="TbUser.do?command=userboarddetail&boardNum=<%=list.get(i).getBoardNum() %>" ><%=list.get(i).getBoardTitle() %></a>
 							</td>
-							<td align="center"><%=list.get(i).getBoardGender() %></td>
-							<td align="center"><%=list.get(i).getBoardDate() %></td>
+							<td class="listOp" align="center"><%=list.get(i).getBoardGender() %></td>
+							<td class="listOp" align="center"><%=list.get(i).getBoardDate() %></td>
 						</tr>
 
 <%		
@@ -186,15 +181,15 @@
 	<tr>
 		<td colspan="5" align="center">
 			<c:if test="${pageMaker.prev}">
-				<a href="TbUser.do?command=mylist&page=1">처음으로</a>
-				<a href="TbUser.do?command=mylist&page=${pageMaker.startPage-1 }">이전</a>
+				<a class="BoardBtn" href="TbUser.do?command=mylist&page=1">처음으로</a>
+				<a class="BoardBtn" href="TbUser.do?command=mylist&page=${pageMaker.startPage-1 }">이전</a>
 			</c:if>
 			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
-				<a href='<c:url value="TbUser.do?command=mylist&page=${pageNum }"/>'>${pageNum }</a>
+				<a class="BoardBtn" href='<c:url value="TbUser.do?command=mylist&page=${pageNum }"/>'>${pageNum }</a>
 			</c:forEach>
 			<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-				<a href="TbUser.do?command=mylist&page=<%=pageMaker.getEndPage()+1%>">다음</a>
-				<a href="TbUser.do?command=mylist&page=<%=pageMaker.getTempEndPage()%>">마지막페이지</a>
+				<a class="BoardBtn" href="TbUser.do?command=mylist&page=<%=pageMaker.getEndPage()+1%>">다음</a>
+				<a class="BoardBtn" href="TbUser.do?command=mylist&page=<%=pageMaker.getTempEndPage()%>">마지막페이지</a>
 			</c:if>
 	</td>	
  </tr>
@@ -205,5 +200,6 @@
 </div>
 
 <%@ include file="./form/footer.jsp" %>
+
 </body>
 </html>
