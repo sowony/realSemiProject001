@@ -69,7 +69,7 @@
 		TbCalBiz biz = new TbCalBizImpl();
 
 		int groupNum = userInfo.getGroupNum();
-		
+				
 
 		TbGroupDto groupDto = (TbGroupDto) request.getAttribute("groupDto");
 		
