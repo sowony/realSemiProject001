@@ -52,15 +52,14 @@ cursor: pointer;
 %>
    
    
-   <div class="board" >
+   <div  align="center" class="board" >
    <form action="TbBoard.do" method="post" >
    <input type="hidden" name="command" value="boardwriteres"/>
    <input type="hidden" name="userId" value="<%=userInfo.getUserId() %>" />
-   <fieldset>
       <table>
          <tr>
 <!--             <th>제목</th> -->
-            <td><input type="text" name="boardTitle" placeholder="제목을 작성해주세요" /></td>
+            <td align="center" ><input style="height:30px;width:250px;" type="text" name="boardTitle" placeholder="제목을 작성해주세요" /></td>
          </tr>
          <tr>
 <!--             <th>내용</th> -->
@@ -75,35 +74,9 @@ cursor: pointer;
             </td>
          </tr>
       </table>
-   </fieldset>
    </form>
    </div>
    
-   
-   <div>
-   <form action="TbBoard.do" method="post" >
-   <input type="hidden" name="command" value="boardwriteres"/>
-   <input type="hidden" name="userId" value="<%=userInfo.getUserId() %>" />
-      <table>
-         <tr>
-<!--             <th>제목</th> -->
-            <td align="center" ><input style="height:20px;width:300px;" type="text" name="boardTitle" placeholder="제목을 작성해주세요"/></td>
-         </tr>
-         <tr>
-<!--             <th>내용</th> -->
-            <td><textarea rows="15" cols="30" name="boardContent" id="summernote" ></textarea>
-            </td>
-         </tr>
-         <tr>
-            <td colspan="2" align="center" >
-               
-               <input type="button" value="작성취소" id="write_fail" onclick="history.back();" style="margin-right: 10px;" /> 
-               <input type="submit" value="작성완료" id="write_success"/>
-            </td>
-         </tr>
-      </table>
-   </form>
-   </div>
    
    <%@ include file="./form/footer.jsp" %>
 

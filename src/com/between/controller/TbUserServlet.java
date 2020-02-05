@@ -330,7 +330,6 @@ public class TbUserServlet extends HttpServlet {
 				request.setAttribute("partnerId", partnerId);
 			    dispatch("TbUserUserMyPage.jsp", request, response);
 				}else {
-					
 					String partnerId = biz.partnerIdShow(groupNum,userId);
 					
 					request.setAttribute("partnerId", partnerId);
